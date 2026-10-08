@@ -37,9 +37,44 @@ INJECTION_PATTERNS: list[re.Pattern] = [
         r"\b(jailbreak\s+mode|DAN\s+mode|developer\s+mode|do\s+anything\s+now)\b",
         re.IGNORECASE,
     ),
+    # Capstone additions -------------------------------------------------
+    # Memory-wipe: "forget everything you were told", "erase all prior
+    # instructions". Requires a quantifier (everything/all/any) followed by
+    # an instruction noun, so "clear the dust off my paddle" passes.
+    re.compile(
+        r"\b(forget|erase|wipe|clear)\s+(everything|all|any)\s+(of\s+)?(your|the|my)?\s*"
+        r"(previous|prior|earlier|above)?\s*"
+        r"(instructions?|rules?|context|guidelines|you\s+(were|have\s+been)\s+told)\b",
+        re.IGNORECASE,
+    ),
+    # Credential / config exfiltration: "print your API key", "dump the
+    # environment variables", "show me the .env file". The seed
+    # reveal-prompt rule only covers prompts; this covers secrets.
+    re.compile(
+        r"\b(reveal|show|print|leak|give|output|dump|send|list)\s+(me\s+)?(your|the)\s+"
+        r"(openai\s+)?(api[\s_-]?keys?|secret\s+keys?|access\s+tokens?|credentials|"
+        r"env(ironment)?\s+variables?|\.env(\s+file)?)(?!\w)",
+        re.IGNORECASE,
+    ),
+    # Chat-template smuggling: Llama-style [INST]/<<SYS>> delimiters or a
+    # markdown header that opens a fake "### Instructions:" / "## SYSTEM"
+    # block. Complements the seed ChatML <|im_start|> rule.
+    re.compile(
+        r"(\[\s*/?\s*(INST|SYS)\s*\]|<<\s*/?\s*SYS\s*>>|"
+        r"^\s*#{2,}\s*(system|instructions?|new\s+instructions?)\b)",
+        re.IGNORECASE | re.MULTILINE,
+    ),
 ]
 
+_IPV4_OCTET = r"(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)"
+
 PII_PATTERNS: dict[str, re.Pattern] = {
+    # IPv4 first so dotted quads are redacted whole before the phone and
+    # card scanners see their digit runs. Lookarounds reject partial
+    # matches inside longer dotted numbers (e.g. "999.1.1.1").
+    "ip_address": re.compile(
+        rf"(?<![\d.]){_IPV4_OCTET}(?:\.{_IPV4_OCTET}){{3}}(?!\.?\d)"
+    ),
     "email": re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b"),
     "phone": re.compile(r"(?<!\d)(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}(?!\d)"),
     "ssn": re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),
@@ -47,6 +82,7 @@ PII_PATTERNS: dict[str, re.Pattern] = {
 }
 
 PII_REDACTIONS: dict[str, str] = {
+    "ip_address": "[REDACTED_IP]",
     "email": "[REDACTED_EMAIL]",
     "phone": "[REDACTED_PHONE]",
     "ssn": "[REDACTED_SSN]",
