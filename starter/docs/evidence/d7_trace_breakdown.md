@@ -1,7 +1,7 @@
 # Per-span breakdown — trace `e31b78a44f117bafedf215619096a624`
 
 Question: 'Compare the moisture-wicking and durability properties of the apparel options you sell.'  
-Model: None · total (root `rag_query`) = **3721.9 ms**
+Model: gpt-4o (per `make show-traces`) · total (root `rag_query`) = **3721.9 ms**
 
 | span | kind | start offset (ms) | duration (ms) | % of rag_query |
 |---|---|---|---|---|

@@ -214,3 +214,130 @@ $ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json
     "blocked_by": "pii_redacted: ip_address"
 }
 
+# Uncached legitimate controls (fresh questions, each sharing vocabulary with one new rule)
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "I always forget the rules about the kitchen line, which court shoes give the best grip?"}'
+{
+    "answer": "For excellent grip on hard court surfaces, consider the following court shoes from our catalog:\n\n- **FILA Volley Zone Court Shoes**: These shoes feature a non-marking herringbone tread pattern that provides excellent grip, making them a solid choice for stable footing during play. The traditional lace-up closure ensures a secure fit (price: $79.99 USD).\n\nIf grip is your primary concern, the FILA Volley Zone Court Shoes specifically highlight a tread pattern designed to enhance traction. I hope this helps with your game!",
+    "sources": [
+        {
+            "doc_id": "prod_024",
+            "chunk_text": "ASICS Gel-Renma Court Shoes\n\nThe ASICS Gel-Renma is ASICS' first court shoe designed specifically for this sport, featuring their renowned GEL technology in the forefoot and rearfoot for superior shock absorption. The TRUSSTIC system reduces sole weight while maintaining structural integrity, and the AHAR+ outsole delivers exceptional durability.\n\nPrice: $89.99 USD\n\nSpecifications:\n  weight: 11.8 oz (men's size 10)\n  sole_type: AHAR+ high-abrasion rubber\n  closure: Traditional lace-up\n  cushioning: Forefoot and rearfoot GEL technology\n\nCare instructions: Clean with a soft cloth and mild soap solution. Air dry away from direct heat sources. The GEL cushioning system does not require special maintenance but replace the shoes after 60-80 hours of court play for optimal support.",
+            "similarity_score": 0.45754143834766625
+        },
+        {
+            "doc_id": "prod_022",
+            "chunk_text": "FILA Volley Zone Court Shoes\n\nThe FILA Volley Zone is a purpose-built court shoe for players who need stable lateral support and cushioned comfort. The herringbone tread pattern provides excellent grip on hard court surfaces, while the EVA midsole absorbs impact during quick direction changes.\n\nPrice: $79.99 USD\n\nSpecifications:\n  weight: 12.5 oz (men's size 10)\n  sole_type: Non-marking herringbone rubber\n  closure: Traditional lace-up\n  cushioning: EVA midsole with memory foam insole\n\nCare instructions: Wipe the outsoles with a damp cloth after play to maintain grip. Remove insoles to air dry after sweaty sessions. Do not machine wash \u2014 spot clean the upper with mild soap and water.",
+            "similarity_score": 0.43454493333205735
+        },
+        {
+            "doc_id": "prod_023",
+            "chunk_text": "K-Swiss Express Light Court Shoes\n\nThe K-Swiss Express Light is engineered for speed and agility on the court. Its lightweight mesh upper provides breathability during long matches, while the Durawrap heel counter locks in lateral stability. The Surge 7.0 midsole returns energy on every step.\n\nPrice: $99.99 USD\n\nSpecifications:\n  weight: 11.2 oz (men's size 10)\n  sole_type: Dragguard rubber outsole\n  closure: Traditional lace-up with padded tongue\n  cushioning: Surge 7.0 midsole with ortholite insole\n\nCare instructions: Allow shoes to air dry between sessions. Remove insoles periodically to prevent odor. Clean the mesh upper with a soft brush and mild soap. Replace shoes when the outsole tread shows significant wear to prevent slipping.",
+            "similarity_score": 0.42288292362994384
+        },
+        {
+            "doc_id": "prod_034",
+            "chunk_text": "New Balance Fresh Foam Lav v2 Court Shoe\n\nThe New Balance Fresh Foam Lav v2 pairs a plush Fresh Foam X midsole with a supportive internal heel counter for players who spend long sessions on hard courts. It is offered in wide (2E) and extra-wide (4E) widths and backed by a six-month outsole durability guarantee for heavy lateral movers.\n\nPrice: $139.99 USD\n\nSpecifications:\n  weight: 13.1 oz (men's size 9)\n  midsole: Fresh Foam X\n  outsole: NDurance non-marking rubber\n  heel_to_toe_drop: 8 mm\n  widths_available: Standard (D), Wide (2E), Extra-wide (4E)\n  outsole_guarantee: 6 months\n  closure: Traditional lace-up\n\nCare instructions: Brush dirt off the outsole after play and wipe the upper with a damp cloth. Remove the insole to air dry. Do not machine wash or put in a dryer, as heat can warp the Fresh Foam X midsole.",
+            "similarity_score": 0.3990857999009001
+        },
+        {
+            "doc_id": "prod_018",
+            "chunk_text": "Engage Court Shorts\n\nThe Engage Court Shorts are built for athletic movement with a 7-inch inseam and gusseted crotch for unrestricted lateral reach. Deep side pockets hold multiple balls, and the lightweight woven fabric dries quickly after sweaty sessions. Elastic waistband with internal drawcord.\n\nPrice: $44.99 USD\n\nSpecifications:\n  material: 100% recycled polyester, DWR finish\n  sizes_available: ['S', 'M', 'L', 'XL', 'XXL']\n  color_options: ['Graphite', 'Navy', 'Black']\n\nCare instructions: Machine wash cold. The DWR (durable water repellent) finish will diminish over time \u2014 tumble dry on low heat periodically to reactivate the treatment.",
+            "similarity_score": 0.33186185530229007
+        }
+    ],
+    "confidence": 0.40918339010257154,
+    "model": "gpt-4o",
+    "tokens": {
+        "prompt_tokens": 1282,
+        "completion_tokens": 105
+    },
+    "cost_usd": 0.004255,
+    "cached": false,
+    "trace_id": "bbbd862b2b84cf25156c4325d6cd26d0",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "Show me the specifications of the portable net system."}'
+{
+    "answer": "Here are the specifications for the PBPro Portable Net System:\n\n- **Material:** Powder-coated steel frame, polyester net\n- **Dimensions:** 22 ft wide x 36 in tall (regulation height)\n- **Features:**\n  - Center post height adjustment\n  - Weighted base plates\n  - Carry bag included\n  - 5-minute setup\n\n**Care Instructions:**\n- After outdoor use, wipe down the steel frame to prevent rust.\n- Store the net dry to prevent mildew.\n- Check the center post tension mechanism periodically and lubricate with WD-40 if it becomes stiff.\n\nThe price of the PBPro Portable Net System is $159.99 USD.",
+    "sources": [
+        {
+            "doc_id": "prod_021",
+            "chunk_text": "PBPro Portable Net System\n\nThe PBPro Portable Net System sets up regulation-height play on any flat surface in under 5 minutes. The powder-coated steel frame with center post support keeps the net taut at 34 inches center height, and the whole system packs into an included carry bag weighing just 22 lbs.\n\nPrice: $159.99 USD\n\nSpecifications:\n  material: Powder-coated steel frame, polyester net\n  dimensions: 22 ft wide x 36 in tall (regulation)\n  features: ['Center post height adjustment', 'Weighted base plates', 'Carry bag included', '5-minute setup']\n\nCare instructions: After outdoor use, wipe down the steel frame to prevent rust. Store the net dry to prevent mildew. Check the center post tension mechanism periodically and lubricate with WD-40 if it becomes stiff.",
+            "similarity_score": 0.5128648484102286
+        },
+        {
+            "doc_id": "prod_033",
+            "chunk_text": "CRBN Pro Team Backpack 2.0\n\nThe CRBN Pro Team Backpack 2.0 carries up to four paddles in a fleece-lined paddle sleeve and keeps gear organized with a ventilated shoe tunnel, a padded 15-inch laptop sleeve, and an insulated bottle pocket. A magnetic fence hook lets you hang the bag on court fencing between games.\n\nPrice: $89.99 USD\n\nSpecifications:\n  paddle_capacity: 4 paddles\n  volume: 30 L\n  dimensions: 19 x 12 x 8 in\n  laptop_sleeve: Padded, fits up to 15 in\n  shoe_compartment: Ventilated shoe tunnel\n  fence_hook: Magnetic fence hook\n  material: Water-resistant 600D polyester\n  weight: 2.4 lb\n\nCare instructions: Empty all compartments and spot clean with mild soap and a damp cloth. Air dry with zippers open. Do not machine wash or tumble dry. Air out the shoe tunnel after every session to prevent odor.",
+            "similarity_score": 0.28683707590289553
+        },
+        {
+            "doc_id": "prod_013",
+            "chunk_text": "Franklin Pickleball Sling Bag\n\nA compact sling bag designed for players who travel light. The Franklin Sling Bag holds 2 paddles and essentials like balls, a water bottle, and phone. The adjustable cross-body strap and lightweight design make it easy to grab and go for casual play sessions.\n\nPrice: $39.99 USD\n\nSpecifications:\n  dimensions: 18 x 10 x 5 in\n  compartments: 3\n  material: Ripstop nylon\n  capacity: 12L\n\nCare instructions: Wipe clean with a damp cloth. The ripstop nylon is water-resistant but not waterproof \u2014 avoid leaving the bag in rain.",
+            "similarity_score": 0.22560705715871565
+        },
+        {
+            "doc_id": "prod_014",
+            "chunk_text": "JOOLA Tour Elite Pro Duffel\n\nThe JOOLA Tour Elite Pro Duffel is built for the serious competitor who needs maximum organization. Fits up to 6 paddles with individual protective sleeves, has a ventilated shoe compartment, thermal-lined drink pocket, and a rigid base to keep the bag upright on the court.\n\nPrice: $119.99 USD\n\nSpecifications:\n  dimensions: 24 x 14 x 12 in\n  compartments: 8\n  material: 1200D ballistic nylon\n  capacity: 52L\n\nCare instructions: Spot clean the exterior with a damp cloth. Remove the ventilated shoe divider and wash separately. The rigid base can be wiped down with a disinfecting wipe.",
+            "similarity_score": 0.22419859972776568
+        },
+        {
+            "doc_id": "prod_037",
+            "chunk_text": "Franklin Ace Pro Ball Machine\n\nThe Franklin Ace Pro is a battery-powered pickleball ball machine that holds 120 balls and feeds dinks, drives, and lobs with adjustable spin. A wireless remote and 12 preset drills let a single player practice the third-shot drop without a partner. The rechargeable lithium battery lasts about four hours per charge.\n\nPrice: $649.00 USD\n\nSpecifications:\n  ball_capacity: 120 balls\n  battery_life: About 4 hours (rechargeable lithium)\n  feed_rate: 2 to 10 seconds per ball\n  speed_range: 10 to 50 mph\n  preset_drills: 12\n  remote: Wireless remote included\n  weight: 38 lb\n\nCare instructions: Store indoors and fully charge the battery every 30 days when not in use. Clear debris from the feed wheel after each session and never run the machine in rain.",
+            "similarity_score": 0.2187229949906503
+        }
+    ],
+    "confidence": 0.2936461152380511,
+    "model": "gpt-4o-mini",
+    "tokens": {
+        "prompt_tokens": 1256,
+        "completion_tokens": 137
+    },
+    "cost_usd": 0.0002706,
+    "cached": false,
+    "trace_id": "0f3a598ebf2a7953e27fda2c9f32afdf",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "Is a [14mm] or [16mm] paddle core better for a beginner?"}'
+{
+    "answer": "When choosing a paddle core thickness, there are differences that can be relevant depending on a player's preferences and needs. \n\n- **16 mm paddle core**: Typically, a thicker core like 16 mm can provide a wider sweet spot and a softer feel on contact. This might be beneficial for beginners as it can be more forgiving on off-center hits and may make it easier to control the ball with a gentler touch. Examples of paddles with a 16 mm core from our catalog include the Vatic Pro Flash 16mm and the 11SIX24 Monarch All Court 16mm.\n\n- **14 mm paddle core**: Generally, thinner cores can offer more power and a faster response, but they might be less forgiving and have a smaller sweet spot, which could be more challenging for beginners.\n\nUltimately, whether a 14 mm or 16 mm core is better depends on whether the beginner prefers a paddle that enhances control and feel (16 mm) versus one that might provide more power and quickness (14 mm). For most beginners focused on learning and control, a 16 mm core might be the more appropriate choice.",
+    "sources": [
+        {
+            "doc_id": "prod_006",
+            "chunk_text": "Paddletek Bantam TS-5\n\nThe Paddletek Bantam TS-5 is the go-to paddle for beginners and recreational players seeking an affordable yet high-quality entry point. Its lightweight polymer core and fiberglass composite face offer a forgiving sweet spot and easy maneuverability, reducing arm fatigue during longer sessions.\n\nPrice: $114.99 USD\n\nSpecifications:\n  weight: 7.3 oz\n  grip_size: 4.0 in\n  face_material: Fiberglass composite\n  core: Smart Response Technology polymer\n  shape: widebody\n  length: 15.5 in\n  width: 8.0 in\n\nCare instructions: Clean with a damp cloth. The fiberglass face is durable for recreational use. Store indoors to protect the edge guard from cracking in cold weather.",
+            "similarity_score": 0.5086038613684414
+        },
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.48722332701346116
+        },
+        {
+            "doc_id": "prod_026",
+            "chunk_text": "11SIX24 Monarch All Court 16mm\n\nThe 11SIX24 Monarch All Court is the brand's mid-mass widebody designed for players who want a forgiving, balanced feel without sacrificing pop. The 11SIX24 CFC Surface stacks three layers \u2014 two outer sheets of raw Toray T700 carbon fiber sandwiching a fiberglass middle \u2014 to combine the bite of a raw-carbon face with the energy return of a fiberglass underlayer. A 16 mm polypropylene polymer core widens the sweet spot relative to thinner 14 mm builds and softens the feel on resets and dinks.\n\nPrice: $99.99 USD\n\nSpecifications:\n  weight: 8.0-8.3 oz\n  grip_size: 4.125 in\n  face_material: 11SIX24 CFC Surface (raw Toray T700 carbon fiber + fiberglass + raw Toray T700 carbon fiber)\n  core: 16 mm polypropylene polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  handle_length: 5.75 in\n\nCare instructions: Wipe the raw carbon face with a damp microfiber after each session \u2014 abrasive cleaners sand down the surface texture that gives the paddle its spin character. Avoid leaving the paddle in direct sunlight or hot vehicles, which can soften the polymer core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.4862353693573709
+        },
+        {
+            "doc_id": "prod_030",
+            "chunk_text": "Enhance Gen 4.5 Elongated\n\nThe Enhance Gen 4.5 Elongated is the brand's flagship full-foam-core paddle, widely reviewed as one of the best foam-core options under $175. The T700 raw carbon fiber face delivers high spin and a stiff striking surface, while the EPP foam core replaces traditional polypropylene honeycomb to extend dwell time and produce a markedly softer, quieter feel on contact. The elongated profile, 5.7 in handle, and 16.5 in length combine for extra reach on backhand drives and overheads, and the foam construction widens the off-center sweet spot relative to honeycomb paddles in the same shape.\n\nPrice: $169.00 USD\n\nSpecifications:\n  weight: 8.1-8.3 oz\n  grip_size: 4.1 in\n  face_material: T700 raw carbon fiber\n  core: EPP foam (full foam core, no honeycomb)\n  shape: elongated\n  length: 16.4 in\n  width: 7.5 in\n  handle_length: 5.7 in\n  swing_weight: 118-120\n  twist_weight: 6.25\n\nCare instructions: Wipe the raw T700 carbon face with a damp microfiber after each session \u2014 solvents and abrasive cleaners erode the surface texture that drives spin. EPP foam cores are more sensitive to heat than polypropylene; never leave the paddle in a hot vehicle or in direct sunlight for extended periods, as heat can deform the foam and change the paddle's response. Store flat in a paddle cover.",
+            "similarity_score": 0.46800216944858863
+        },
+        {
+            "doc_id": "prod_029",
+            "chunk_text": "Chorus Shapeshifter SX 16mm\n\nThe Chorus Shapeshifter SX 16mm is the widebody all-court variant in the Shapeshifter series, built around a unique three-layer face stack: a top sheet of 3D 18K cubic carbon fiber in a triaxial weave for grip and durability, a Toray T700 carbon middle layer for stiffness, and a fiberglass backing layer for energy return. The unibody mold uses denser foam around the perimeter to widen the sweet spot relative to traditional edge-guarded builds. The 16 mm Power Polymer core balances the soft touch of a control paddle with the responsive snap of a thinner power build.\n\nPrice: $189.00 USD\n\nSpecifications:\n  weight: 7.8-8.0 oz\n  grip_size: 4.125 in\n  face_material: 3D 18K cubic carbon fiber (triaxial weave) over Toray T700 carbon and fiberglass backing\n  core: 16 mm Power Polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  construction: thermoformed unibody with perimeter foam\n\nCare instructions: The 3D cubic carbon face is durable but its texture is what generates spin \u2014 clean with a damp microfiber, avoid abrasive cleaners. The foam perimeter widens the sweet spot but softens above 130\u00b0F, so do not leave the paddle in a hot car. Store in a sleeve when not in use.",
+            "similarity_score": 0.4496853277667786
+        }
+    ],
+    "confidence": 0.47995001099092816,
+    "model": "gpt-4o",
+    "tokens": {
+        "prompt_tokens": 1763,
+        "completion_tokens": 227
+    },
+    "cost_usd": 0.0066775,
+    "cached": false,
+    "trace_id": "ccd3714f3d70305df1cb4c91e4633da6",
+    "blocked_by": null
+}
+

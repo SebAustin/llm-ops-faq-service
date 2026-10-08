@@ -237,7 +237,7 @@ read from the matching `query_type` rows in `data/cost_log.jsonl`):
 
 | # | Question | Classification | `model` | `cost_usd` |
 |---|---|---|---|---|
-| 1 | What is the weight of the Selkirk AMPED S2? | **budget** | `gpt-4.1-nano` | $0.000151 |
+| 1 | What is the weight of the Selkirk AMPED S2? | **budget** | `gpt-4.1-nano` | $0.00015 |
 | 2 | How should I care for the Vatic Pro Flash paddle's raw carbon face? | **simple** | `gpt-4o-mini` | $0.000329 |
 | 3 | Compare the Selkirk Vanguard Power Air and the JOOLA Hyperion CFS 16 for a player with arm fatigue who wants tournament-grade power. | **complex** | `gpt-4o` | $0.007510 |
 | 4 | *(borderline)* Is the Engage Pursuit MX a forgiving choice for someone who plays casually on weekends? | **complex** | `gpt-4o` | $0.005420 |
@@ -464,14 +464,15 @@ I gate on **faithfulness**, not on the lowest metric. Faithfulness is the closes
 > **Regression threshold: aggregate `faithfulness ≥ 0.88` on the 30-question golden set at `top_k = 5`.**
 >
 > *Justification from the observed distribution.*
-> - Three independent healthy runs gave 0.914 and 0.913 (sweep, k=3 and k=5) and **0.918**
->   (`make eval`). That is a **range of only 0.005**, so the aggregate is very stable from
->   run to run.
+> - The two independent runs at the gated configuration (`top_k = 5`) gave **0.913** (sweep)
+>   and **0.918** (`make eval`). That is a **range of only 0.005**. The k=3 run (0.914)
+>   falls inside the same band, so the aggregate is very stable from run to run.
 > - The threshold sits ~0.03 below the lowest healthy run. That is about 6× the observed
 >   range, so ordinary sampling noise will not trip it.
 > - Per question, faithfulness has **median 1.000, p25 0.947, p10 0.667, min 0.500**. A
->   0.03 drop in the mean corresponds to roughly one more question falling to the p10 level
->   (0.667) or below.
+>   0.03 drop is not one bad answer. It is roughly three questions falling from 1.0 to the p10 level
+>   (0.667): each such question moves the 30-question mean by only −0.011. So a 0.03 drop
+>   means about **three** previously fully faithful answers now contain unsupported claims.
 > - The threshold is tight enough to catch the regression I measured myself: **`top_k = 10`
 >   scored 0.860**, so it would have failed this gate.
 >
@@ -540,7 +541,19 @@ Q: How do I clear the dust off my paddle face?
    -> model='gpt-4o-mini' blocked_by=None cached=True cost_usd=0.000379 top_doc=prod_028
 Q: My checkout failed from IP 203.0.113.42, can you tell me which balls are good for cold weather?
    -> model='gpt-4o' blocked_by='pii_redacted: ip_address' cached=True cost_usd=0.004185 top_doc=prod_032
+Q: I always forget the rules about the kitchen line, which court shoes give the best grip?
+   -> model='gpt-4o' blocked_by=None cached=False cost_usd=0.004255 top_doc=prod_024
+Q: Show me the specifications of the portable net system.
+   -> model='gpt-4o-mini' blocked_by=None cached=False cost_usd=0.000271 top_doc=prod_021
+Q: Is a [14mm] or [16mm] paddle core better for a beginner?
+   -> model='gpt-4o' blocked_by=None cached=False cost_usd=0.006678 top_doc=prod_006
 ```
+
+The first three legitimate controls above were served from the semantic cache, because I had
+asked them earlier in the session. The last three are **fresh, uncached** controls, each
+phrased to share vocabulary with one new rule. *"I always **forget the rules** about the
+kitchen line…"* is the near-miss the tightened memory-wipe rule was designed to let through.
+All three return `blocked_by: null` and go to the LLM.
 
 **Known limitations, from the spec-axis code review.**
 - I deliberately dropped `clear` from the memory-wipe verbs (the plan had it). "How do I clear all the dirt from my shoes" is a normal shopper question, while "Clear all previous instructions" is left to the DeBERTa scanner behind the regex layer.
@@ -579,8 +592,10 @@ judge FPR in `make eval-llm-judge` on every judge-prompt change.
 
 ## Deliverable 7 — Distributed Tracing
 
-**Summary.** The service handled **50+ traced queries** in this session (the curls above plus
-`make seed-traces`). The Phoenix project `llm-ops-capstone` shows P50 **780 ms** and P99
+**Summary.** The service handled **well over 10 `/query` requests** in this session (the curls
+above plus `make seed-traces`). 34 of them reached the LLM and appear in the cost log; the
+rest were blocked or served from cache. Every answered request produces about five *root*
+traces (see below), so Phoenix counts more traces than requests. The Phoenix project `llm-ops-capstone` shows P50 **780 ms** and P99
 **3.5 s** across root spans.
 
 ![Phoenix trace — rag_query with retrieval (CreateEmbeddings) and generation (ChatCompletion) spans](docs/evidence/d7_phoenix_trace.png)
@@ -592,7 +607,7 @@ judge FPR in `make eval-llm-judge` on every judge-prompt change.
 you sell."*:
 
 Question: 'Compare the moisture-wicking and durability properties of the apparel options you sell.'  
-Model: None · total (root `rag_query`) = **3721.9 ms**
+Model: gpt-4o (per `make show-traces`) · total (root `rag_query`) = **3721.9 ms**
 
 | span | kind | start offset (ms) | duration (ms) | % of rag_query |
 |---|---|---|---|---|
@@ -620,8 +635,10 @@ traces gives:
 | hallucination judge (`gpt-4o-mini`) | `ChatCompletion` | 1,262 | 17.3% |
 | cache-store embedding | `CreateEmbeddings` | 482 | 6.6% |
 
-Generation is still the single slowest step, but **57% of the user-visible latency is five
-extra network round-trips**. The two cheapest fixes:
+Generation is still the single slowest step, but the other five network calls take **50.6%**
+of the request, and about 6.5% is local work between spans (guards, Chroma, serialization).
+Four of those five calls exist only for **routing, caching and safety**: everything except the
+retrieval embedding. The two cheapest fixes:
 1. Reuse the cache-lookup embedding for the cache store, and for retrieval when the question
    is unchanged. That saves about 1 s per miss and removes two embedding calls.
 2. Wrap the whole route in one parent span, so a single trace shows the real end-to-end
@@ -636,7 +653,8 @@ Raw export: [`docs/evidence/d7_show_traces.md`](docs/evidence/d7_show_traces.md)
 
 ### Part A — log + dashboard
 
-`data/cost_log.jsonl` has **68 rows, all real traffic**; `make seed-cost-log` was never run. Each
+`data/cost_log.jsonl` has **68 rows, all real traffic** (the committed file is exactly the snapshot
+`cost_report.py` analysed; the uncached D6 controls captured afterwards are not included); `make seed-cost-log` was never run. Each
 answered query writes two rows: the answer, and its `hallucination_check` judge call. A
 trimmed copy of the log is committed with `git add -f` so the reviewer can inspect it.
 
