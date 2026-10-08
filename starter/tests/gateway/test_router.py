@@ -28,9 +28,10 @@ def test_select_model_maps_simple_to_mini_and_complex_to_full():
 
 @pytest.mark.parametrize(
     "query_type,expected_model",
-    [("simple", "gpt-4o-mini"), ("complex", "gpt-4o")],
+    [("budget", "gpt-4.1-nano"), ("simple", "gpt-4o-mini"), ("complex", "gpt-4o")],
 )
-def test_route_query_dispatches_to_correct_model(query_type, expected_model):
+def test_route_query_dispatches_to_correct_model(query_type, expected_model, monkeypatch):
+    monkeypatch.setattr(settings, "model_budget", "gpt-4.1-nano")
     response = _make_response(expected_model)
 
     with patch("src.gateway.router.classify", return_value=query_type) as classifier, \
@@ -56,7 +57,7 @@ def test_route_query_default_top_k_is_5():
     assert traced.call_args.kwargs["top_k"] == 5
 
 
-# --- Stand-out: third (budget) routing tier --------------------------------
+# --- Budget tier ------------------------------------------------------------
 
 
 def test_select_model_maps_budget_to_budget_model(monkeypatch):
@@ -68,14 +69,3 @@ def test_select_model_budget_falls_back_to_simple_when_tier_disabled(monkeypatch
     monkeypatch.setattr(settings, "model_budget", "")
     assert select_model("budget") == settings.model_simple
 
-
-def test_route_query_dispatches_budget_queries_to_budget_model(monkeypatch):
-    monkeypatch.setattr(settings, "model_budget", "gpt-4.1-nano")
-    response = _make_response("gpt-4.1-nano")
-    with patch("src.gateway.router.classify", return_value="budget"), \
-         patch("src.gateway.router.traced_pipeline", return_value=response) as traced, \
-         patch("src.gateway.router.log_request") as log:
-        route_query("Q")
-
-    assert traced.call_args.kwargs["model"] == "gpt-4.1-nano"
-    log.assert_called_once_with("gpt-4.1-nano", response.tokens, response.cost_usd, "budget")

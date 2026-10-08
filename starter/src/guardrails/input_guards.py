@@ -10,6 +10,12 @@ locally without external accounts.
 To add a new injection pattern, append a ``re.compile(...)`` to
 ``INJECTION_PATTERNS``. To add a new PII type, add an entry to
 ``PII_PATTERNS`` and a matching redaction string in ``PII_REDACTIONS``.
+Order matters: patterns run in dict order on the progressively redacted
+text, so put a pattern *before* any broader one that could consume part of
+its match (``ip_address`` precedes ``phone``/``credit_card`` for this reason).
+Keep every new regex linear-time: an optional group must consume its own
+trailing whitespace so no two ``\\s`` tokens are adjacent (see the ReDoS
+regression test in tests/guardrails/test_input_guards.py).
 """
 
 import re

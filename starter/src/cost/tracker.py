@@ -6,10 +6,10 @@ from pathlib import Path
 from typing import Literal
 
 from src.config import settings
-from src.models import TokenUsage
+from src.models import RouteTier, TokenUsage
 from src.pricing import compute_cost  # re-exported for callers that prefer this entry point
 
-QueryType = Literal["budget", "simple", "complex", "hallucination_check"]
+QueryType = RouteTier | Literal["hallucination_check"]
 
 
 def _resolve_path(path: str | Path | None) -> Path:

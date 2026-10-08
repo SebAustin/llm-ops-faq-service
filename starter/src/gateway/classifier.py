@@ -12,15 +12,16 @@ capable, more expensive) route.
 
 import json
 from pathlib import Path
-from typing import Literal
+from typing import get_args
 
 from jinja2 import Environment, FileSystemLoader
 from openai import OpenAI
 
 from src.config import settings
+from src.models import RouteTier
 
-QueryType = Literal["budget", "simple", "complex"]
-_VALID_LABELS: frozenset[str] = frozenset(("budget", "simple", "complex"))
+QueryType = RouteTier
+_VALID_LABELS: frozenset[str] = frozenset(get_args(RouteTier))
 
 _PROMPTS_DIR = Path(__file__).resolve().parents[2] / "prompts"
 # Prompts are plaintext, not HTML; explicit autoescape=False signals the

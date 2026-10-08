@@ -61,7 +61,7 @@ You should see a JSON `QueryResponse` with `answer`, retrieved `sources`, `confi
    │ 2. detect_pii (redact)          src/guardrails/input_guards.py   │
    │ 3. cache_lookup                 src/cache/semantic.py            │
    │       └── on hit: return cached response                         │
-   │ 4. classify (gpt-4o-mini)       src/gateway/classifier.py        │
+   │ 4. classify budget/simple/complex src/gateway/classifier.py      │
    │ 5. select_model + traced_pipeline  src/gateway/router.py +       │
    │                                 src/tracing/phoenix_backend.py   │
    │ 6. retrieve (Chroma)            src/rag/retriever.py             │
@@ -136,8 +136,8 @@ project/
 |---|---|---|
 | Add a new product to the seed corpus | `data/products/*.json` then `make load-data` | Fields required: `product_id`, `name`, `category`, `brand`, `price`, `description`, `specifications` (object), `care_instructions`. |
 | Auto-ingest products at runtime | Drop a JSON in `data/inbox/` while `make watch` is running | Malformed files move to `data/inbox/failed/<name>.error.txt`. Files over 256 KB are rejected. |
-| Add a new LLM and price | `src/pricing.py::MODEL_PRICING` then refer to it from `.env` (`MODEL_COMPLEX` / `MODEL_SIMPLE`) | Pricing is USD per 1M tokens, `(input_price, output_price)`. |
-| Tune the simple/complex routing prompt | `prompts/classifier.j2` | Returns JSON `{"classification": "simple"\|"complex"}`. Bad JSON falls through to `complex` (the safe-but-pricier default). |
+| Add a new LLM and price | `src/pricing.py::MODEL_PRICING` then refer to it from `.env` (`MODEL_COMPLEX` / `MODEL_SIMPLE` / `MODEL_BUDGET`) | Pricing is USD per 1M tokens, `(input_price, output_price)`. `Settings` rejects an unpriced routing model at startup; a blank `MODEL_BUDGET` disables the budget tier. |
+| Tune the budget/simple/complex routing prompt | `prompts/classifier.j2` | Returns JSON `{"classification": "budget"\|"simple"\|"complex"}`. The label set is `src/models.py::RouteTier`. Bad JSON falls through to `complex` (the safe-but-pricier default). |
 | Block a new prompt-injection pattern | `src/guardrails/input_guards.py::INJECTION_PATTERNS` | Append a `re.compile(...)`. The handler short-circuits to `_safe_response` on first match. |
 | Add a new PII type | `src/guardrails/input_guards.py::PII_PATTERNS` and `PII_REDACTIONS` | The redacted question flows to LLM, cache, and traces — not the raw value. |
 | Use ML-backed guards instead of regex | Swap imports in `src/gateway/routes.py` from `src.guardrails.input_guards` to `src.guardrails.llm_guard.input_guards` | First scan downloads ~400 MB of HuggingFace models; cache them with `make install-guardrails-models`. |

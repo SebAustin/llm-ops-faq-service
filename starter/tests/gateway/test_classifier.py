@@ -75,7 +75,7 @@ def test_classify_handles_empty_completion_content():
         assert classify("anything") == "complex"
 
 
-# --- Stand-out: third (budget) routing tier --------------------------------
+# --- Budget tier and malformed classifier output -----------------------------
 
 
 def test_classify_returns_budget_for_budget_label():

@@ -3,7 +3,7 @@
 from typing import Literal
 
 from dotenv import load_dotenv
-from pydantic import field_validator
+from pydantic import ValidationInfo, field_validator
 from pydantic_settings import BaseSettings
 
 from src.pricing import MODEL_PRICING
@@ -68,7 +68,7 @@ class Settings(BaseSettings):
 
     @field_validator("model_complex", "model_simple", "model_budget", mode="before")
     @classmethod
-    def _routing_model_is_priced(cls, value: object, info) -> object:
+    def _routing_model_is_priced(cls, value: object, info: ValidationInfo) -> object:
         """Fail at startup, not after a paid LLM call, on an unpriced model.
 
         compute_cost raises KeyError for unknown models, which would only

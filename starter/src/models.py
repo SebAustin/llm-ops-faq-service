@@ -1,6 +1,13 @@
 """Shared Pydantic models used across the capstone project."""
 
+from typing import Literal
+
 from pydantic import BaseModel
+
+# Routing tiers emitted by the classifier. Single source of truth for the
+# gateway (classifier/router) and cost tracker; lives here (rank 0) so the
+# forward-dependency rule lets both import it.
+RouteTier = Literal["budget", "simple", "complex"]
 
 
 class Source(BaseModel):

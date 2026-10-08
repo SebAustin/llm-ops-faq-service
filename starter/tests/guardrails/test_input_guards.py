@@ -1,7 +1,10 @@
 """Tests for src.guardrails.input_guards."""
 
+import time
+
 import pytest
 
+from src.gateway.routes import QueryRequest
 from src.guardrails import detect_pii, detect_prompt_injection
 
 
@@ -81,7 +84,7 @@ def test_detect_pii_finds_multiple_kinds():
     assert "123-45-6789" not in redacted
 
 
-# --- Capstone D6: new injection patterns -----------------------------------
+# --- Memory-wipe, credential-exfiltration and chat-template rules ----------
 # Each positive must be caught *by the new rule* (the reason string names
 # the matched regex), proving the rule adds coverage the seed patterns
 # lacked. Each negative is a legitimate shopper question that shares
@@ -165,7 +168,7 @@ def test_delimiter_rule_passes_bracketed_product_questions(text):
     assert detect_prompt_injection(text) is None
 
 
-# --- Capstone D6 bonus: IPv4 addresses as a PII type ------------------------
+# --- IPv4 addresses as a PII type ------------------------------------------
 
 
 @pytest.mark.parametrize("ip", ["192.168.1.25", "10.0.0.1", "203.0.113.254"])
@@ -191,11 +194,11 @@ def test_detect_pii_ignores_version_numbers_and_measurements(text):
     assert found == []
 
 
-# --- Robustness review fixes (ReDoS, false positives, misses) --------------
+# --- Linear-time scanning (ReDoS), benign look-alikes, common phrasings -----
 
-import time  # noqa: E402
-
-MAX_QUESTION_CHARS = 4000  # QueryRequest.question max_length
+MAX_QUESTION_CHARS = next(
+    m.max_length for m in QueryRequest.model_fields["question"].metadata if hasattr(m, "max_length")
+)
 REGEX_BUDGET_S = 0.25  # generous for CI; a linear scan of 4 KB takes ~1 ms
 
 

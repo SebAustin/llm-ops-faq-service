@@ -19,11 +19,12 @@ def select_model(query_type: QueryType) -> str:
     degrades to the simple model when it is blank. Anything unexpected
     goes to the complex model, matching the classifier's safe default.
     """
-    if query_type == "budget":
-        return settings.model_budget or settings.model_simple
-    if query_type == "simple":
-        return settings.model_simple
-    return settings.model_complex
+    tier_models = {
+        "budget": settings.model_budget or settings.model_simple,
+        "simple": settings.model_simple,
+        "complex": settings.model_complex,
+    }
+    return tier_models.get(query_type, settings.model_complex)
 
 
 def route_query(question: str, top_k: int = 5) -> QueryResponse:

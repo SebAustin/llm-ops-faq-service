@@ -11,9 +11,13 @@ git-tracked so changes are reviewed alongside code.
   Rendered by `src/rag/generator.py::render_system_prompt`.
 
 - `classifier.j2` — Query classifier that routes questions to the appropriate
-  model (`simple` → `gpt-4o-mini`, `complex` → `gpt-4o`). Returns a JSON
-  object so the result is parseable. Rendered by
-  `src/gateway/classifier.py::classify`.
+  model (`budget` → `gpt-4.1-nano`, `simple` → `gpt-4o-mini`, `complex` →
+  `gpt-4o`; models come from `MODEL_BUDGET` / `MODEL_SIMPLE` / `MODEL_COMPLEX`).
+  Returns a JSON object so the result is parseable. Rendered by
+  `src/gateway/classifier.py::classify`. Note: `make eval` calls the RAG
+  pipeline with a fixed model and does **not** exercise this prompt — after
+  editing it, spot-check routing with live `POST /query` calls and the
+  `query_type` column of `data/cost_log.jsonl`.
 
 ## The BEGIN_CONTEXT / END_CONTEXT pattern
 
