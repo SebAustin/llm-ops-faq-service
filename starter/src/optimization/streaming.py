@@ -13,7 +13,7 @@ from typing import Iterator
 
 from src.config import settings
 from src.models import Source, TokenUsage
-from src.pricing import compute_cost
+from src.pricing import MODEL_PRICING, compute_cost
 from src.rag import run_pipeline
 from src.rag.generator import _client, render_system_prompt
 from src.rag.retriever import retrieve
@@ -58,7 +58,9 @@ def stream_completion(
         usage = TokenUsage(prompt_tokens=0, completion_tokens=0)
 
     answer = "".join(parts)
-    cost = compute_cost(model, usage) if model in {"gpt-4o", "gpt-4o-mini"} else 0.0
+    # Price any model in the pricing table (not a hardcoded subset), so a
+    # newly added routing tier is never silently logged at $0.
+    cost = compute_cost(model, usage) if model in MODEL_PRICING else 0.0
     yield (answer, usage, cost)
 
 

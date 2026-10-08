@@ -13,8 +13,17 @@ from src.tracing import traced_pipeline
 
 
 def select_model(query_type: QueryType) -> str:
-    """Map a query type to the configured model name."""
-    return settings.model_simple if query_type == "simple" else settings.model_complex
+    """Map a query type to the configured model name.
+
+    ``budget`` uses ``settings.model_budget`` when the tier is enabled and
+    degrades to the simple model when it is blank. Anything unexpected
+    goes to the complex model, matching the classifier's safe default.
+    """
+    if query_type == "budget":
+        return settings.model_budget or settings.model_simple
+    if query_type == "simple":
+        return settings.model_simple
+    return settings.model_complex
 
 
 def route_query(question: str, top_k: int = 5) -> QueryResponse:

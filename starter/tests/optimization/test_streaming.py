@@ -54,6 +54,19 @@ def test_stream_completion_yields_each_token_then_final_tuple():
     assert cost == pytest.approx((10 * 0.15 + 3 * 0.60) / 1_000_000)
 
 
+def test_stream_completion_prices_budget_tier_model():
+    # Regression: cost used to be hardcoded to {gpt-4o, gpt-4o-mini}, so a
+    # newly added tier silently logged $0. Any priced model must be costed.
+    chunks = [_delta("Hi"), _usage_chunk(prompt=1_000, completion=200)]
+
+    with patch("src.optimization.streaming._client") as client:
+        client.chat.completions.create.return_value = iter(chunks)
+        produced = list(stream_completion("Q", [_source()], "gpt-4.1-nano"))
+
+    _, _, cost = produced[-1]
+    assert cost == pytest.approx((1_000 * 0.10 + 200 * 0.40) / 1_000_000)
+
+
 def test_stream_completion_skips_empty_deltas():
     chunks = [
         _delta(None),

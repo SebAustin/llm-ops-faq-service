@@ -59,6 +59,10 @@ class Settings(BaseSettings):
     # Models
     model_complex: str = "gpt-4o"
     model_simple: str = "gpt-4o-mini"
+    # Third, cheapest tier for literal single-attribute lookups. Set
+    # MODEL_BUDGET= (empty) to disable it; "budget" queries then fall
+    # back to model_simple.
+    model_budget: str = "gpt-4.1-nano"
     embedding_model: str = "text-embedding-3-small"
 
     # Application

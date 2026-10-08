@@ -73,3 +73,27 @@ def test_classify_handles_empty_completion_content():
         )
 
         assert classify("anything") == "complex"
+
+
+# --- Stand-out: third (budget) routing tier --------------------------------
+
+
+def test_classify_returns_budget_for_budget_label():
+    with patch("src.gateway.classifier._client") as client:
+        client.chat.completions.create.return_value = _completion(
+            '{"classification": "budget", "reasoning": "single literal attribute"}'
+        )
+
+        assert classify("What is the price of the Vatic Pro Flash?") == "budget"
+
+
+def test_classifier_prompt_offers_all_three_tiers():
+    with patch("src.gateway.classifier._client") as client:
+        client.chat.completions.create.return_value = _completion(
+            '{"classification": "simple", "reasoning": "x"}'
+        )
+        classify("anything")
+
+    prompt = client.chat.completions.create.call_args.kwargs["messages"][0]["content"]
+    for label in ('"budget"', '"simple"', '"complex"'):
+        assert label in prompt
