@@ -1,0 +1,22 @@
+{
+  "product_id": "prod_031",
+  "name": "Vatic Pro Flash 16mm",
+  "category": "paddles",
+  "brand": "Vatic Pro",
+  "price": 109.99,
+  "description": "The Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.",
+  "specifications": {
+    "weight": "7.9 oz",
+    "core_thickness": "16 mm",
+    "core": "Polypropylene honeycomb",
+    "face_material": "Raw T700 carbon fiber",
+    "construction": "Thermoformed unibody with foam-injected edges",
+    "shape": "Elongated",
+    "length": "16.5 in",
+    "width": "7.5 in",
+    "grip_size": "4.125 in",
+    "handle_length": "5.5 in",
+    "usapa_approved": "Yes"
+  },
+  "care_instructions": "Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges."
+}

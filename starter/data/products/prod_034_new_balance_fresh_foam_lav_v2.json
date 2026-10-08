@@ -1,0 +1,18 @@
+{
+  "product_id": "prod_034",
+  "name": "New Balance Fresh Foam Lav v2 Court Shoe",
+  "category": "shoes",
+  "brand": "New Balance",
+  "price": 139.99,
+  "description": "The New Balance Fresh Foam Lav v2 pairs a plush Fresh Foam X midsole with a supportive internal heel counter for players who spend long sessions on hard courts. It is offered in wide (2E) and extra-wide (4E) widths and backed by a six-month outsole durability guarantee for heavy lateral movers.",
+  "specifications": {
+    "weight": "13.1 oz (men's size 9)",
+    "midsole": "Fresh Foam X",
+    "outsole": "NDurance non-marking rubber",
+    "heel_to_toe_drop": "8 mm",
+    "widths_available": "Standard (D), Wide (2E), Extra-wide (4E)",
+    "outsole_guarantee": "6 months",
+    "closure": "Traditional lace-up"
+  },
+  "care_instructions": "Brush dirt off the outsole after play and wipe the upper with a damp cloth. Remove the insole to air dry. Do not machine wash or put in a dryer, as heat can warp the Fresh Foam X midsole."
+}

@@ -1,0 +1,19 @@
+{
+  "product_id": "prod_033",
+  "name": "CRBN Pro Team Backpack 2.0",
+  "category": "bags",
+  "brand": "CRBN",
+  "price": 89.99,
+  "description": "The CRBN Pro Team Backpack 2.0 carries up to four paddles in a fleece-lined paddle sleeve and keeps gear organized with a ventilated shoe tunnel, a padded 15-inch laptop sleeve, and an insulated bottle pocket. A magnetic fence hook lets you hang the bag on court fencing between games.",
+  "specifications": {
+    "paddle_capacity": "4 paddles",
+    "volume": "30 L",
+    "dimensions": "19 x 12 x 8 in",
+    "laptop_sleeve": "Padded, fits up to 15 in",
+    "shoe_compartment": "Ventilated shoe tunnel",
+    "fence_hook": "Magnetic fence hook",
+    "material": "Water-resistant 600D polyester",
+    "weight": "2.4 lb"
+  },
+  "care_instructions": "Empty all compartments and spot clean with mild soap and a damp cloth. Air dry with zippers open. Do not machine wash or tumble dry. Air out the shoe tunnel after every session to prevent odor."
+}

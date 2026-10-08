@@ -1,0 +1,17 @@
+{
+  "product_id": "prod_035",
+  "name": "JOOLA Solstice Sun Hoodie",
+  "category": "apparel",
+  "brand": "JOOLA",
+  "price": 64.99,
+  "description": "The JOOLA Solstice Sun Hoodie is a lightweight long-sleeve hoodie rated UPF 50+ for outdoor play in strong sun. Its quick-dry, moisture-wicking knit and thumbhole cuffs keep hands and forearms covered, and a scuba-style hood fits over a visor for extra neck protection.",
+  "specifications": {
+    "upf_rating": "UPF 50+",
+    "material": "88% recycled polyester, 12% spandex",
+    "fit": "Athletic",
+    "features": "Thumbhole cuffs, scuba-style hood, flatlock seams",
+    "sizes": "XS-3XL",
+    "colors": "Sky blue, coral, charcoal"
+  },
+  "care_instructions": "Machine wash cold on a gentle cycle with like colors. Do not use fabric softener, which reduces moisture wicking. Tumble dry low or hang dry. Do not iron the printed logo."
+}

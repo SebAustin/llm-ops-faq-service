@@ -1,0 +1,19 @@
+{
+  "product_id": "prod_032",
+  "name": "Vulcan VPRO Flight Outdoor Ball (6-Pack)",
+  "category": "balls",
+  "brand": "Vulcan",
+  "price": 17.99,
+  "description": "The Vulcan VPRO Flight is a tournament-grade outdoor pickleball with 40 precision-drilled holes and a seamless rotomolded shell. It is engineered for a consistent bounce in cold weather, staying crack-resistant down to 40°F, which makes it a strong choice for winter and early-spring outdoor play.",
+  "specifications": {
+    "pack_size": "6 balls",
+    "hole_count": "40",
+    "weight": "0.92 oz per ball",
+    "diameter": "2.94 in",
+    "construction": "Seamless rotomolded",
+    "color": "Neon optic yellow",
+    "cold_weather_rating": "Crack-resistant to 40°F",
+    "usapa_approved": "Yes"
+  },
+  "care_instructions": "Store balls in a cool, dry place away from direct sunlight. Rotate out balls that develop soft spots or lose roundness. Rinse with water and air dry after muddy sessions."
+}
