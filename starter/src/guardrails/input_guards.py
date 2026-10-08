@@ -20,16 +20,20 @@ INJECTION_PATTERNS: list[re.Pattern] = [
     re.compile(r"\byou\s+are\s+now\s+", re.IGNORECASE),
     re.compile(r"\bact\s+as\s+(an?\s+)?", re.IGNORECASE),
     re.compile(r"\bpretend\s+(to\s+be|you\s+are)\b", re.IGNORECASE),
-    re.compile(r"^\s*system\s*[:>]", re.IGNORECASE | re.MULTILINE),
-    re.compile(r"^\s*assistant\s*[:>]", re.IGNORECASE | re.MULTILINE),
-    re.compile(r"<\s*\|?\s*im_start\s*\|?\s*>", re.IGNORECASE),
+    # [ \t]* (not \s*) keeps each ^-anchored attempt on its own line;
+    # \s* would rescan every following newline from every line start.
+    re.compile(r"^[ \t]*system[ \t]*[:>]", re.IGNORECASE | re.MULTILINE),
+    re.compile(r"^[ \t]*assistant[ \t]*[:>]", re.IGNORECASE | re.MULTILINE),
+    # Optional "|" groups own their trailing whitespace: no two adjacent
+    # \s* tokens, so whitespace runs cannot be split many ways (ReDoS).
+    re.compile(r"<\s*(?:\|\s*)?im_start\s*(?:\|\s*)?>", re.IGNORECASE),
     re.compile(
         r"\b(reveal|show|print|leak|repeat|tell\s+me)\s+(your|the)\s+"
         r"(system|initial|original|hidden|secret)\s+(prompt|instructions?|rules?|message)\b",
         re.IGNORECASE,
     ),
     re.compile(
-        r"\b(bypass|override|turn\s+off|disable|ignore)\s+(your|the|all)?\s*"
+        r"\b(bypass|override|turn\s+off|disable|ignore)\s+(?:(?:your|the|all)\s+)?"
         r"(safety|guardrails?|filters?|restrictions?|content\s+policy|policies)\b",
         re.IGNORECASE,
     ),
@@ -38,30 +42,41 @@ INJECTION_PATTERNS: list[re.Pattern] = [
         re.IGNORECASE,
     ),
     # Capstone additions -------------------------------------------------
+    # ReDoS rule for every pattern below: each optional group consumes its
+    # own trailing whitespace, so no two \s tokens are ever adjacent and a
+    # whitespace-padded near-miss is rejected in linear time.
+    #
     # Memory-wipe: "forget everything you were told", "erase all prior
-    # instructions". Requires a quantifier (everything/all/any) followed by
-    # an instruction noun, so "clear the dust off my paddle" passes.
+    # instructions", "forget your instructions". The first word after the
+    # verb must be a quantifier or "your", so "I forget the rules of
+    # scoring" and "forget about re-gripping" pass.
     re.compile(
-        r"\b(forget|erase|wipe|clear)\s+(everything|all|any)\s+(of\s+)?(your|the|my)?\s*"
-        r"(previous|prior|earlier|above)?\s*"
-        r"(instructions?|rules?|context|guidelines|you\s+(were|have\s+been)\s+told)\b",
+        r"\b(forget|erase|wipe)\s+(?:everything|all|any|your)\s+"
+        r"(?:(?:of|your|the|previous|prior|earlier)\s+)*"
+        r"(?:instructions?|rules?|context|guidelines|above|before|"
+        r"you\s+(?:were|have\s+been)\s+told)\b",
         re.IGNORECASE,
     ),
     # Credential / config exfiltration: "print your API key", "dump the
-    # environment variables", "show me the .env file". The seed
-    # reveal-prompt rule only covers prompts; this covers secrets.
+    # env vars", "show me the contents of the .env file". Generic nouns
+    # (credentials, access tokens) only count when they are *yours*, so
+    # "show me the credentials of your coaches" passes.
     re.compile(
-        r"\b(reveal|show|print|leak|give|output|dump|send|list)\s+(me\s+)?(your|the)\s+"
-        r"(openai\s+)?(api[\s_-]?keys?|secret\s+keys?|access\s+tokens?|credentials|"
-        r"env(ironment)?\s+variables?|\.env(\s+file)?)(?!\w)",
+        r"\b(?:reveal|show|print|leak|give|output|dump|send|list|tell|what\s+is|what's)\s+"
+        r"(?:me\s+)?(?:the\s+contents\s+of\s+)?"
+        r"(?:(?:your|the)\s+(?:openai[\s_]+)?"
+        r"(?:api[\s_-]?keys?|secret[\s_-]?keys?|env(?:ironment)?[\s_]+var(?:iable)?s?|"
+        r"\.env(?:\s+file)?)"
+        r"|your\s+(?:credentials|access[\s_-]+tokens?))(?!\w)",
         re.IGNORECASE,
     ),
-    # Chat-template smuggling: Llama-style [INST]/<<SYS>> delimiters or a
-    # markdown header that opens a fake "### Instructions:" / "## SYSTEM"
-    # block. Complements the seed ChatML <|im_start|> rule.
+    # Chat-template smuggling: Llama-style [INST]/<<SYS>> delimiters, or a
+    # markdown header line that is *only* a fake "## SYSTEM" /
+    # "### Instructions:" block opener ("## Instructions for regripping"
+    # passes). Complements the seed ChatML <|im_start|> rule.
     re.compile(
-        r"(\[\s*/?\s*(INST|SYS)\s*\]|<<\s*/?\s*SYS\s*>>|"
-        r"^\s*#{2,}\s*(system|instructions?|new\s+instructions?)\b)",
+        r"(\[\s*(?:/\s*)?(INST|SYS)\s*\]|<<\s*(?:/\s*)?SYS\s*>>|"
+        r"^[ \t]*#{2,}[ \t]*(?:system|instructions?|new[ \t]+instructions?)[ \t]*(?::|$))",
         re.IGNORECASE | re.MULTILINE,
     ),
 ]
@@ -71,9 +86,10 @@ _IPV4_OCTET = r"(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)"
 PII_PATTERNS: dict[str, re.Pattern] = {
     # IPv4 first so dotted quads are redacted whole before the phone and
     # card scanners see their digit runs. Lookarounds reject partial
-    # matches inside longer dotted numbers (e.g. "999.1.1.1").
+    # matches inside longer dotted numbers (e.g. "999.1.1.1") and
+    # word-prefixed version strings (e.g. "v1.2.3.4").
     "ip_address": re.compile(
-        rf"(?<![\d.]){_IPV4_OCTET}(?:\.{_IPV4_OCTET}){{3}}(?!\.?\d)"
+        rf"(?<![\w.]){_IPV4_OCTET}(?:\.{_IPV4_OCTET}){{3}}(?!\.?\d)"
     ),
     "email": re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b"),
     "phone": re.compile(r"(?<!\d)(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}(?!\d)"),

@@ -68,12 +68,12 @@ async def query(request: QueryRequest) -> QueryResponse:
 
     1. ``detect_prompt_injection`` — short-circuits to a safe response on
        match. The LLM is never called for blocked input.
-    2. ``detect_pii`` — redacts emails, phone numbers, SSNs, credit cards.
+    2. ``detect_pii`` — redacts IPv4 addresses, emails, phone numbers, SSNs, credit cards.
        The redacted text is what flows downstream; raw PII never reaches
        the cache, the LLM, or the tracing backend.
     3. ``cache_lookup`` — returns a cached ``QueryResponse`` if the
        embedding is within the similarity threshold of a prior query.
-    4. ``route_query`` — classify simple/complex, dispatch to the right
+    4. ``route_query`` — classify budget/simple/complex, dispatch to the right
        model, run the traced RAG pipeline, log per-request cost.
     5. ``check_hallucination`` and ``is_off_topic`` — output guards that
        block answers citing nonexistent products or veering off-topic.

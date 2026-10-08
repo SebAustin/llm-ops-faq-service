@@ -1,4 +1,4 @@
-"""Tiered model routing — classify, dispatch to mini or 4o, log cost.
+"""Tiered model routing — classify, dispatch to nano / mini / 4o, log cost.
 
 This is the integration hub: classify → choose model → run traced
 pipeline → log per-request cost. Deliverable #3 of the project proposal

@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
+from src.pricing import MODEL_PRICING
+
 # Load .env into os.environ early so libraries that read environment
 # variables directly — RAGAS's internal OpenAI() client, the openai
 # SDK's base-URL discovery, anything bypassing Settings — see the
@@ -63,6 +65,29 @@ class Settings(BaseSettings):
     # MODEL_BUDGET= (empty) to disable it; "budget" queries then fall
     # back to model_simple.
     model_budget: str = "gpt-4.1-nano"
+
+    @field_validator("model_complex", "model_simple", "model_budget", mode="before")
+    @classmethod
+    def _routing_model_is_priced(cls, value: object, info) -> object:
+        """Fail at startup, not after a paid LLM call, on an unpriced model.
+
+        compute_cost raises KeyError for unknown models, which would only
+        surface once the completion had already been billed. A blank
+        MODEL_BUDGET is allowed and disables the budget tier.
+        """
+        if not isinstance(value, str):
+            return value
+        name = value.strip()
+        if name == "" and info.field_name == "model_budget":
+            return ""
+        if name not in MODEL_PRICING:
+            env_var = info.field_name.upper()
+            raise ValueError(
+                f"{env_var}={name!r} has no entry in src.pricing.MODEL_PRICING; "
+                f"add its per-token price there first (priced: {sorted(MODEL_PRICING)})"
+            )
+        return name
+
     embedding_model: str = "text-embedding-3-small"
 
     # Application

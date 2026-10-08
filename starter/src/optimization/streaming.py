@@ -8,6 +8,7 @@ We measure both blocking and streaming and report the comparison so
 students can see when streaming is worth the extra plumbing.
 """
 
+import logging
 import time
 from typing import Iterator
 
@@ -17,6 +18,8 @@ from src.pricing import MODEL_PRICING, compute_cost
 from src.rag import run_pipeline
 from src.rag.generator import _client, render_system_prompt
 from src.rag.retriever import retrieve
+
+logger = logging.getLogger(__name__)
 
 
 def stream_completion(
@@ -59,8 +62,16 @@ def stream_completion(
 
     answer = "".join(parts)
     # Price any model in the pricing table (not a hardcoded subset), so a
-    # newly added routing tier is never silently logged at $0.
-    cost = compute_cost(model, usage) if model in MODEL_PRICING else 0.0
+    # newly added routing tier is never silently logged at $0. Routed
+    # models are validated at startup (src.config); an explicit unpriced
+    # model still streams, but the $0 is surfaced as a warning.
+    if model in MODEL_PRICING:
+        cost = compute_cost(model, usage)
+    else:
+        logger.warning(
+            "Streaming model %r has no entry in MODEL_PRICING; logging cost as $0", model
+        )
+        cost = 0.0
     yield (answer, usage, cost)
 
 

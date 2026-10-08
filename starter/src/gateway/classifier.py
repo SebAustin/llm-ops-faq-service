@@ -53,10 +53,12 @@ def classify(question: str) -> QueryType:
     raw = response.choices[0].message.content or "{}"
     try:
         parsed = json.loads(raw)
-        label = parsed.get("classification")
     except json.JSONDecodeError:
-        label = None
+        parsed = None
+    # Guard both shapes: a non-object payload ("[...]", "42") has no .get,
+    # and a non-string label (list/dict) is unhashable in the set lookup.
+    label = parsed.get("classification") if isinstance(parsed, dict) else None
 
-    if label not in _VALID_LABELS:
+    if not isinstance(label, str) or label not in _VALID_LABELS:
         return "complex"
     return label

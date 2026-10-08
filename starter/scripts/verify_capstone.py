@@ -66,6 +66,7 @@ AUTOMATED_CHECKS: list[Check] = [
 
 MANUAL_CHECKS: list[str] = [
     "make load-data — data/chroma/ is populated; PersistentClient.get_or_create_collection('products').count() returns >0",
+    "POST /query (budget) — single-attribute lookup returns via gpt-4.1-nano (check `model` field)",
     "POST /query (simple) — returns response via gpt-4o-mini (check `model` field)",
     "POST /query (complex) — returns response via gpt-4o (check `model` field)",
     "data/cost_log.jsonl — appended after each query",

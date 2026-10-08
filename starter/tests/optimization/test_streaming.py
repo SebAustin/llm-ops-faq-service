@@ -67,6 +67,17 @@ def test_stream_completion_prices_budget_tier_model():
     assert cost == pytest.approx((1_000 * 0.10 + 200 * 0.40) / 1_000_000)
 
 
+def test_stream_completion_warns_instead_of_silently_logging_zero_for_unpriced_model(caplog):
+    chunks = [_delta("Hi"), _usage_chunk(prompt=10, completion=2)]
+
+    with patch("src.optimization.streaming._client") as client, caplog.at_level("WARNING"):
+        client.chat.completions.create.return_value = iter(chunks)
+        produced = list(stream_completion("Q", [_source()], "some-unpriced-model"))
+
+    assert produced[-1][2] == 0.0
+    assert "some-unpriced-model" in caplog.text and "MODEL_PRICING" in caplog.text
+
+
 def test_stream_completion_skips_empty_deltas():
     chunks = [
         _delta(None),

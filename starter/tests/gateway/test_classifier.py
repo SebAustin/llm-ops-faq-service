@@ -97,3 +97,14 @@ def test_classifier_prompt_offers_all_three_tiers():
     prompt = client.chat.completions.create.call_args.kwargs["messages"][0]["content"]
     for label in ('"budget"', '"simple"', '"complex"'):
         assert label in prompt
+
+
+@pytest.mark.parametrize(
+    "bad_content",
+    ['{"classification": ["simple"]}', '{"classification": {"x": 1}}', '["simple"]', "42"],
+)
+def test_classify_falls_back_to_complex_on_non_string_or_non_object_json(bad_content):
+    with patch("src.gateway.classifier._client") as client:
+        client.chat.completions.create.return_value = _completion(bad_content)
+
+        assert classify("anything") == "complex"
