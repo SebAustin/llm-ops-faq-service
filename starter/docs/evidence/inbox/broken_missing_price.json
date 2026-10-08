@@ -1,0 +1,9 @@
+{
+  "product_id": "prod_039",
+  "name": "Mystery Overgrip 12-Pack",
+  "category": "accessories",
+  "brand": "Gamma",
+  "description": "A 12-pack of tacky overgrips. This file intentionally omits the required price field to exercise the quarantine path.",
+  "specifications": {"pack_size": "12"},
+  "care_instructions": "Replace when the grip loses tack."
+}

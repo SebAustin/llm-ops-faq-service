@@ -1,0 +1,22 @@
+uv run python scripts/cost_report.py
+Records:           68
+Actual cost:       $0.0866
+Baseline (gpt-4o): $0.2667
+Savings:           $0.1800 (67.5%)
+
+Per-tier summary:
+  gpt-4o        N=  15  avg=$0.0051/query  total=$0.0760
+  gpt-4o-mini   N=  42  avg=$0.0002/query  total=$0.0091
+  gpt-4.1-nano  N=  11  avg=$0.0001/query  total=$0.0016
+
+# Supplementary: per-route breakdown (query_type) and answer-only savings
+| query_type | model | N | avg $/query | total $ |
+|---|---|---|---|---|
+| complex | gpt-4o | 15 | $0.005066 | $0.0760 |
+| hallucination_check | gpt-4o-mini | 34 | $0.000205 | $0.0070 |
+| simple | gpt-4o-mini | 8 | $0.000267 | $0.0021 |
+| budget | gpt-4.1-nano | 11 | $0.000142 | $0.0016 |
+
+Answer-only (excl. 34 judge rows, which a single-model deployment would still run on gpt-4o-mini):
+  routed $0.0797 vs all-gpt-4o $0.1508 -> savings $0.0711 (47.1%) over 34 answered queries
+  hallucination-judge overhead: $0.0070 = 8.0% of actual spend

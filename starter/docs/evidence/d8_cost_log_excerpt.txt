@@ -1,0 +1,9 @@
+$ wc -l data/cost_log.jsonl
+      68 data/cost_log.jsonl
+
+$ tail -5 data/cost_log.jsonl
+{"timestamp": "2026-10-08T22:17:03.832946+00:00", "model": "gpt-4o-mini", "prompt_tokens": 1463, "completion_tokens": 32, "cost_usd": 0.00023864999999999997, "query_type": "hallucination_check"}
+{"timestamp": "2026-10-08T22:17:08.885958+00:00", "model": "gpt-4o", "prompt_tokens": 1427, "completion_tokens": 154, "cost_usd": 0.0051075, "query_type": "complex"}
+{"timestamp": "2026-10-08T22:17:10.364093+00:00", "model": "gpt-4o-mini", "prompt_tokens": 1363, "completion_tokens": 32, "cost_usd": 0.00022365, "query_type": "hallucination_check"}
+{"timestamp": "2026-10-08T22:17:17.223625+00:00", "model": "gpt-4o", "prompt_tokens": 1163, "completion_tokens": 245, "cost_usd": 0.0053575, "query_type": "complex"}
+{"timestamp": "2026-10-08T22:17:18.759076+00:00", "model": "gpt-4o-mini", "prompt_tokens": 1190, "completion_tokens": 26, "cost_usd": 0.0001941, "query_type": "hallucination_check"}

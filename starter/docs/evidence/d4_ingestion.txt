@@ -1,0 +1,72 @@
+$ cp docs/evidence/inbox/*.json data/inbox/ && cp data/inbox-templates/bad.json data/inbox/template_bad.json
+
+$ ls data/inbox/ data/inbox/failed/
+data/inbox/:
+failed
+prod_036_selkirk_slk_halo_xl.json
+prod_037_franklin_pickleball_ball_machine.json
+prod_038_lija_court_compression_sleeve.json
+
+data/inbox/failed/:
+broken_missing_price.json
+broken_missing_price.json.error.txt
+template_bad.json
+template_bad.json.error.txt
+
+$ cat data/inbox/failed/broken_missing_price.json.error.txt
+missing required fields: ['price']
+
+$ cat data/inbox/failed/template_bad.json.error.txt
+invalid JSON: Expecting property name enclosed in double quotes: line 15 column 3 (char 619)
+
+# watcher log (from make serve stdout)
+2026-10-08 16:46:58,108 [WARNING] src.ingestion.watcher: Quarantined broken_missing_price.json: missing required fields: ['price']
+2026-10-08 16:46:59,333 [INFO] src.ingestion.watcher: Ingested prod_036 (1 chunk(s))
+2026-10-08 16:47:00,443 [INFO] src.ingestion.watcher: Ingested prod_037 (1 chunk(s))
+2026-10-08 16:47:01,461 [INFO] src.ingestion.watcher: Ingested prod_038 (1 chunk(s))
+2026-10-08 16:47:01,967 [WARNING] src.ingestion.watcher: Quarantined template_bad.json: invalid JSON: Expecting property name enclosed in double quotes: line 15 column 3 (char 619)
+2026-10-08 16:47:02,473 [WARNING] src.ingestion.watcher: Quarantined broken_missing_price.json: missing required fields: ['price']
+2026-10-08 16:47:02,980 [WARNING] src.ingestion.watcher: Quarantined template_bad.json: invalid JSON: Expecting property name enclosed in double quotes: line 15 column 3 (char 619)
+# Query against a product that only exists via inbox ingestion (no restart, no make load-data)
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "How many balls does the ball machine hold and how long does its battery last?"}'
+{
+    "answer": "The Franklin Ace Pro Ball Machine holds 120 balls and its battery lasts about four hours per charge.",
+    "sources": [
+        {
+            "doc_id": "prod_037",
+            "chunk_text": "Franklin Ace Pro Ball Machine\n\nThe Franklin Ace Pro is a battery-powered pickleball ball machine that holds 120 balls and feeds dinks, drives, and lobs with adjustable spin. A wireless remote and 12 preset drills let a single player practice the third-shot drop without a partner. The rechargeable lithium battery lasts about four hours per charge.\n\nPrice: $649.00 USD\n\nSpecifications:\n  ball_capacity: 120 balls\n  battery_life: About 4 hours (rechargeable lithium)\n  feed_rate: 2 to 10 seconds per ball\n  speed_range: 10 to 50 mph\n  preset_drills: 12\n  remote: Wireless remote included\n  weight: 38 lb\n\nCare instructions: Store indoors and fully charge the battery every 30 days when not in use. Clear debris from the feed wheel after each session and never run the machine in rain.",
+            "similarity_score": 0.5735764062944002
+        },
+        {
+            "doc_id": "prod_025",
+            "chunk_text": "Gamma Hi-Rise Ball Hopper\n\nThe Gamma Hi-Rise Ball Hopper holds up to 75 balls and doubles as a convenient ball dispenser during drills and practice sessions. The hi-rise design means no bending to pick up balls \u2014 just press the basket over a ball to scoop it. Folds flat for easy storage.\n\nPrice: $34.99 USD\n\nSpecifications:\n  material: Powder-coated steel wire\n  dimensions: 19 x 16 x 33 in (standing), folds to 4 in flat\n  features: ['Holds 75 balls', 'Press-to-pick-up design', 'Rubber feet prevent scratching', 'Folds flat']\n\nCare instructions: Wipe with a dry cloth to prevent rust. Store indoors to protect the powder coating from weather damage. The rubber feet are replaceable if they wear down.",
+            "similarity_score": 0.43595905253183087
+        },
+        {
+            "doc_id": "prod_010",
+            "chunk_text": "Dura Fast 40 Outdoor Pickleballs\n\nThe Dura Fast 40 is a tournament-grade outdoor ball trusted by competitive players for its true bounce and predictable flight. Pack of 12 balls. The seamless one-piece rotationally molded construction delivers uniform wall thickness and exceptional roundness for consistent play.\n\nPrice: $29.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Rotationally molded seamless plastic\n  indoor_outdoor: outdoor\n\nCare instructions: Outdoor balls wear faster in extreme heat or cold. Store indoors between sessions. This is a 12-pack \u2014 keep spares on hand during competitive play.",
+            "similarity_score": 0.39324955812106754
+        },
+        {
+            "doc_id": "prod_008",
+            "chunk_text": "Franklin X-40 Outdoor Pickleballs\n\nThe Franklin X-40 is the official ball of USA Pickleball and the most widely used outdoor tournament ball. Precision-drilled 40-hole design ensures consistent flight and bounce in wind. Made from durable seamless construction that resists cracking in temperature extremes.\n\nPrice: $12.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Seamless high-density polyethylene\n  indoor_outdoor: outdoor\n\nCare instructions: Store in a cool, dry place. Outdoor balls will eventually crack with heavy use \u2014 this is normal wear. Rotate balls during play to extend their life. Discard balls that show visible cracks or have lost their round shape.",
+            "similarity_score": 0.35709508338197726
+        },
+        {
+            "doc_id": "prod_009",
+            "chunk_text": "Onix Pure 2 Indoor Pickleballs\n\nThe Onix Pure 2 is engineered specifically for indoor play, featuring 26 precisely spaced holes for a softer, more controlled flight on gym and rec center surfaces. The true-flight design minimizes wobble and provides consistent bounce on smooth indoor courts.\n\nPrice: $9.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.86 oz\n  hole_count: 26\n  material: Durable TPU blend\n  indoor_outdoor: indoor\n\nCare instructions: Indoor balls last longer than outdoor balls. Store at room temperature. Clean with a damp cloth if they pick up dust or gym floor residue.",
+            "similarity_score": 0.3497315775209927
+        }
+    ],
+    "confidence": 0.4219223355700537,
+    "model": "gpt-4o",
+    "tokens": {
+        "prompt_tokens": 1222,
+        "completion_tokens": 20
+    },
+    "cost_usd": 0.003255,
+    "cached": false,
+    "trace_id": "fc9f666466cd23ef88fde76a6f7b5ecc",
+    "blocked_by": null
+}
+

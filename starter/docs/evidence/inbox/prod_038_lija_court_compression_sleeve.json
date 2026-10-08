@@ -1,0 +1,16 @@
+{
+  "product_id": "prod_038",
+  "name": "Lija Court Compression Arm Sleeve",
+  "category": "apparel",
+  "brand": "Lija",
+  "price": 24.99,
+  "description": "The Lija Court Compression Arm Sleeve applies graduated compression from wrist to bicep to support the forearm during long sessions, a popular choice for players managing tennis elbow. A silicone gripper band keeps it in place, and the fabric is rated UPF 30.",
+  "specifications": {
+    "compression": "Graduated, 15-20 mmHg",
+    "material": "80% nylon, 20% spandex",
+    "upf_rating": "UPF 30",
+    "sizes": "S, M, L, XL",
+    "sold_as": "Single sleeve"
+  },
+  "care_instructions": "Hand wash or machine wash cold in a mesh bag. Lay flat to dry; do not tumble dry, which weakens the compression fibers."
+}

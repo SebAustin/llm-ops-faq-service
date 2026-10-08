@@ -1,0 +1,29 @@
+uv run python scripts/seed_traces.py
+Running 10 traced queries against http://localhost:8080/query ...
+  [ 1/10] HIT  What is the weight of the Selkirk AMPED S2?
+  [ 2/10] HIT  What is the weight of the Selkirk AMPED S2?
+  [ 3/10] HIT  Compare the Selkirk Vanguard Power Air and JOOLA Hyperion CFS 16 paddl
+  [ 4/10] MISS What is the difference between indoor and outdoor balls?
+  [ 5/10] MISS Which ball is best for outdoor play in windy conditions?
+  [ 6/10] MISS How much does the Franklin Sling Bag cost?
+  [ 7/10] HIT  How much does the Franklin Sling Bag cost?
+  [ 8/10] MISS How many paddles can the JOOLA Tour Elite Pro Duffel hold?
+  [ 9/10] MISS What material are the Engage Court Shorts made of?
+  [10/10] MISS Compare the moisture-wicking and durability properties of the apparel 
+Waiting 4s for span exporters to drain ...
+# Phoenix Trace Export
+
+7 trace(s) captured. Showing the most recent 7.
+
+| # | Trace ID | Question | Model | Latency (ms) | Prompt tok | Compl. tok | Slowest child | Slowest (ms) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | `e31b78a4` | Compare the moisture-wicking and durability properties of the apparel options yo | gpt-4o | 3718.5 | 1215 | 345 | ChatCompletion | 3138.7 |
+| 2 | `3c1cbc0c` | What material are the Engage Court Shorts made of? | gpt-4o-mini | 1700.6 | 1207 | 24 | ChatCompletion | 1168.6 |
+| 3 | `ab63a3b8` | How many paddles can the JOOLA Tour Elite Pro Duffel hold? | gpt-4.1-nano | 1635.6 | 1391 | 23 | ChatCompletion | 1151.5 |
+| 4 | `a595ef39` | How much does the Franklin Sling Bag cost? | gpt-4.1-nano | 1632.7 | 1254 | 14 | ChatCompletion | 1131.8 |
+| 5 | `3e84ff25` | Which ball is best for outdoor play in windy conditions? | gpt-4o | 2416.3 | 1209 | 125 | ChatCompletion | 1935.6 |
+| 6 | `1bf45b97` | What is the difference between indoor and outdoor balls? | gpt-4o | 3405.2 | 1208 | 254 | ChatCompletion | 2643.4 |
+| 7 | `2423db7b` | How many balls come in the Vulcan VPRO Flight pack? | gpt-4.1-nano | 2071.7 | 1309 | 15 | ChatCompletion | 1500.3 |
+
+
+Slowest step across 7 traces: ChatCompletion (avg 1810ms, 76% of total request latency)

@@ -1,0 +1,18 @@
+{
+  "product_id": "prod_037",
+  "name": "Franklin Ace Pro Ball Machine",
+  "category": "accessories",
+  "brand": "Franklin",
+  "price": 649.0,
+  "description": "The Franklin Ace Pro is a battery-powered pickleball ball machine that holds 120 balls and feeds dinks, drives, and lobs with adjustable spin. A wireless remote and 12 preset drills let a single player practice the third-shot drop without a partner. The rechargeable lithium battery lasts about four hours per charge.",
+  "specifications": {
+    "ball_capacity": "120 balls",
+    "battery_life": "About 4 hours (rechargeable lithium)",
+    "feed_rate": "2 to 10 seconds per ball",
+    "speed_range": "10 to 50 mph",
+    "preset_drills": "12",
+    "remote": "Wireless remote included",
+    "weight": "38 lb"
+  },
+  "care_instructions": "Store indoors and fully charge the battery every 30 days when not in use. Clear debris from the feed wheel after each session and never run the machine in rain."
+}

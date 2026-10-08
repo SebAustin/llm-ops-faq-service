@@ -1,0 +1,42 @@
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "What is the core thickness and face material of the Vatic Pro Flash paddle?"}'
+{
+    "answer": "The Vatic Pro Flash 16mm paddle has a core thickness of 16 mm and its face is made of raw T700 carbon fiber.",
+    "sources": [
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.676419851733678
+        },
+        {
+            "doc_id": "prod_026",
+            "chunk_text": "11SIX24 Monarch All Court 16mm\n\nThe 11SIX24 Monarch All Court is the brand's mid-mass widebody designed for players who want a forgiving, balanced feel without sacrificing pop. The 11SIX24 CFC Surface stacks three layers \u2014 two outer sheets of raw Toray T700 carbon fiber sandwiching a fiberglass middle \u2014 to combine the bite of a raw-carbon face with the energy return of a fiberglass underlayer. A 16 mm polypropylene polymer core widens the sweet spot relative to thinner 14 mm builds and softens the feel on resets and dinks.\n\nPrice: $99.99 USD\n\nSpecifications:\n  weight: 8.0-8.3 oz\n  grip_size: 4.125 in\n  face_material: 11SIX24 CFC Surface (raw Toray T700 carbon fiber + fiberglass + raw Toray T700 carbon fiber)\n  core: 16 mm polypropylene polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  handle_length: 5.75 in\n\nCare instructions: Wipe the raw carbon face with a damp microfiber after each session \u2014 abrasive cleaners sand down the surface texture that gives the paddle its spin character. Avoid leaving the paddle in direct sunlight or hot vehicles, which can soften the polymer core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.5318132198187714
+        },
+        {
+            "doc_id": "prod_030",
+            "chunk_text": "Enhance Gen 4.5 Elongated\n\nThe Enhance Gen 4.5 Elongated is the brand's flagship full-foam-core paddle, widely reviewed as one of the best foam-core options under $175. The T700 raw carbon fiber face delivers high spin and a stiff striking surface, while the EPP foam core replaces traditional polypropylene honeycomb to extend dwell time and produce a markedly softer, quieter feel on contact. The elongated profile, 5.7 in handle, and 16.5 in length combine for extra reach on backhand drives and overheads, and the foam construction widens the off-center sweet spot relative to honeycomb paddles in the same shape.\n\nPrice: $169.00 USD\n\nSpecifications:\n  weight: 8.1-8.3 oz\n  grip_size: 4.1 in\n  face_material: T700 raw carbon fiber\n  core: EPP foam (full foam core, no honeycomb)\n  shape: elongated\n  length: 16.4 in\n  width: 7.5 in\n  handle_length: 5.7 in\n  swing_weight: 118-120\n  twist_weight: 6.25\n\nCare instructions: Wipe the raw T700 carbon face with a damp microfiber after each session \u2014 solvents and abrasive cleaners erode the surface texture that drives spin. EPP foam cores are more sensitive to heat than polypropylene; never leave the paddle in a hot vehicle or in direct sunlight for extended periods, as heat can deform the foam and change the paddle's response. Store flat in a paddle cover.",
+            "similarity_score": 0.5289475417611171
+        },
+        {
+            "doc_id": "prod_028",
+            "chunk_text": "Bread & Butter The Filth 16mm Elongated\n\nThe Bread & Butter Filth 16mm Elongated is a thermoformed unibody paddle from the brand's signature high-spin line. The T700 raw carbon fiber face holds aggressive peel-ply texture for tournament-grade topspin, and the 16 mm high-density polypropylene core provides plush dwell time on resets without losing the trademark Filth pop on drives. The elongated 16.5 in profile extends reach for two-handed backhands and overheads, and the octagon handle with vibration-dampening wrap reduces transfer to the wrist on off-center hits. USAP approved.\n\nPrice: $159.99 USD\n\nSpecifications:\n  weight: 7.6-8.0 oz\n  grip_size: 4.25 in\n  face_material: T700 raw carbon fiber, thermoformed unibody\n  core: 16 mm high-density polypropylene honeycomb\n  shape: elongated\n  length: 16.5 in\n  width: 7.375 in\n  handle_length: 5.5 in\n  swing_weight: 121\n  twist_weight: 6.20\n\nCare instructions: Wipe the raw carbon face with a microfiber after each session to preserve the peel-ply texture that drives spin. Skip abrasive cleaners and solvent-based wipes \u2014 they polish away the surface tooth. The thermoformed edge wall is impact-tolerant but not impact-proof; do not drop the paddle on hard courts. Store flat in a paddle cover; avoid hot vehicles.",
+            "similarity_score": 0.5285516483904572
+        },
+        {
+            "doc_id": "prod_029",
+            "chunk_text": "Chorus Shapeshifter SX 16mm\n\nThe Chorus Shapeshifter SX 16mm is the widebody all-court variant in the Shapeshifter series, built around a unique three-layer face stack: a top sheet of 3D 18K cubic carbon fiber in a triaxial weave for grip and durability, a Toray T700 carbon middle layer for stiffness, and a fiberglass backing layer for energy return. The unibody mold uses denser foam around the perimeter to widen the sweet spot relative to traditional edge-guarded builds. The 16 mm Power Polymer core balances the soft touch of a control paddle with the responsive snap of a thinner power build.\n\nPrice: $189.00 USD\n\nSpecifications:\n  weight: 7.8-8.0 oz\n  grip_size: 4.125 in\n  face_material: 3D 18K cubic carbon fiber (triaxial weave) over Toray T700 carbon and fiberglass backing\n  core: 16 mm Power Polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  construction: thermoformed unibody with perimeter foam\n\nCare instructions: The 3D cubic carbon face is durable but its texture is what generates spin \u2014 clean with a damp microfiber, avoid abrasive cleaners. The foam perimeter widens the sweet spot but softens above 130\u00b0F, so do not leave the paddle in a hot car. Store in a sleeve when not in use.",
+            "similarity_score": 0.5007368140229156
+        }
+    ],
+    "confidence": 0.5532938151453879,
+    "model": "gpt-4o",
+    "tokens": {
+        "prompt_tokens": 1910,
+        "completion_tokens": 28
+    },
+    "cost_usd": 0.005055,
+    "cached": false,
+    "trace_id": "a859afd427182fd17501e3d577c8b122",
+    "blocked_by": null
+}
+

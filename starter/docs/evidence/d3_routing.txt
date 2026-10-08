@@ -1,0 +1,168 @@
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "What is the weight of the Selkirk AMPED S2?"}'
+{
+    "answer": "The Selkirk AMPED S2 weighs 7.8 oz.",
+    "sources": [
+        {
+            "doc_id": "prod_001",
+            "chunk_text": "Selkirk AMPED S2\n\nThe Selkirk AMPED S2 delivers a balanced blend of power and control, making it an excellent choice for intermediate players looking to elevate their game. Its FiberFlex fiberglass face provides a responsive feel with consistent ball placement, while the X5 polypropylene honeycomb core absorbs vibration for comfortable extended play.\n\nPrice: $129.99 USD\n\nSpecifications:\n  weight: 7.8 oz\n  grip_size: 4.25 in\n  face_material: FiberFlex fiberglass\n  core: X5 polypropylene honeycomb\n  shape: widebody\n  length: 15.75 in\n  width: 8.0 in\n\nCare instructions: Wipe the paddle face with a damp cloth after play to remove ball residue. Avoid leaving the paddle in direct sunlight or extreme heat, as this can warp the core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.6215829692462863
+        },
+        {
+            "doc_id": "prod_007",
+            "chunk_text": "Selkirk Vanguard Power Air\n\nThe Selkirk Vanguard Power Air represents the pinnacle of paddle engineering. Featuring a proprietary air-injected polypropylene core and a carbon fiber face with QuadFlex 4-layer construction, it delivers unmatched power without sacrificing spin or control. Built for tournament-level play.\n\nPrice: $249.99 USD\n\nSpecifications:\n  weight: 8.4 oz\n  grip_size: 4.25 in\n  face_material: QuadFlex 4-layer carbon fiber\n  core: Air-injected polypropylene\n  shape: elongated\n  length: 16.5 in\n  width: 7.375 in\n\nCare instructions: Clean with a microfiber cloth dampened with water. Avoid chemical cleaners that may degrade the carbon fiber surface. The edge guard is replaceable \u2014 contact Selkirk for parts.",
+            "similarity_score": 0.42303607125937615
+        },
+        {
+            "doc_id": "prod_012",
+            "chunk_text": "Selkirk Team Backpack\n\nThe Selkirk Team Backpack holds up to 4 paddles and all your gear in a ventilated, weather-resistant design. Features a dedicated paddle compartment with fleece lining, separate shoe pocket, insulated cooler pocket, and padded laptop sleeve for players heading straight from work to the court.\n\nPrice: $89.99 USD\n\nSpecifications:\n  dimensions: 20 x 13 x 9 in\n  compartments: 6\n  material: 600D polyester with PVC backing\n  capacity: 35L\n\nCare instructions: Spot clean with mild soap and water. Air dry completely before storing to prevent mildew. Machine washing is not recommended as it can damage the PVC backing and structure.",
+            "similarity_score": 0.41363588956996145
+        },
+        {
+            "doc_id": "prod_033",
+            "chunk_text": "CRBN Pro Team Backpack 2.0\n\nThe CRBN Pro Team Backpack 2.0 carries up to four paddles in a fleece-lined paddle sleeve and keeps gear organized with a ventilated shoe tunnel, a padded 15-inch laptop sleeve, and an insulated bottle pocket. A magnetic fence hook lets you hang the bag on court fencing between games.\n\nPrice: $89.99 USD\n\nSpecifications:\n  paddle_capacity: 4 paddles\n  volume: 30 L\n  dimensions: 19 x 12 x 8 in\n  laptop_sleeve: Padded, fits up to 15 in\n  shoe_compartment: Ventilated shoe tunnel\n  fence_hook: Magnetic fence hook\n  material: Water-resistant 600D polyester\n  weight: 2.4 lb\n\nCare instructions: Empty all compartments and spot clean with mild soap and a damp cloth. Air dry with zippers open. Do not machine wash or tumble dry. Air out the shoe tunnel after every session to prevent odor.",
+            "similarity_score": 0.3426016265575911
+        },
+        {
+            "doc_id": "prod_029",
+            "chunk_text": "Chorus Shapeshifter SX 16mm\n\nThe Chorus Shapeshifter SX 16mm is the widebody all-court variant in the Shapeshifter series, built around a unique three-layer face stack: a top sheet of 3D 18K cubic carbon fiber in a triaxial weave for grip and durability, a Toray T700 carbon middle layer for stiffness, and a fiberglass backing layer for energy return. The unibody mold uses denser foam around the perimeter to widen the sweet spot relative to traditional edge-guarded builds. The 16 mm Power Polymer core balances the soft touch of a control paddle with the responsive snap of a thinner power build.\n\nPrice: $189.00 USD\n\nSpecifications:\n  weight: 7.8-8.0 oz\n  grip_size: 4.125 in\n  face_material: 3D 18K cubic carbon fiber (triaxial weave) over Toray T700 carbon and fiberglass backing\n  core: 16 mm Power Polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  construction: thermoformed unibody with perimeter foam\n\nCare instructions: The 3D cubic carbon face is durable but its texture is what generates spin \u2014 clean with a damp microfiber, avoid abrasive cleaners. The foam perimeter widens the sweet spot but softens above 130\u00b0F, so do not leave the paddle in a hot car. Store in a sleeve when not in use.",
+            "similarity_score": 0.3333879076022648
+        }
+    ],
+    "confidence": 0.42684889284709593,
+    "model": "gpt-4.1-nano",
+    "tokens": {
+        "prompt_tokens": 1445,
+        "completion_tokens": 15
+    },
+    "cost_usd": 0.0001505,
+    "cached": false,
+    "trace_id": "d6b1caa532ab66ddcb97e589d2f40011",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "How should I care for the Vatic Pro Flash paddle's raw carbon face?"}'
+{
+    "answer": "To care for the Vatic Pro Flash paddle's raw carbon face, follow these instructions:\n\n- **Cleaning:** Use a carbon-safe eraser or a damp microfiber cloth to clean the face. \n- **Avoid Abrasive Cleaners:** Do not use abrasive cleaners, as they can damage the surface.\n- **Storage:** Store the paddle at room temperature and avoid leaving it in a hot car, as heat can degrade the thermoformed edges.\n\nBy following these care instructions, you can help maintain the paddle's performance and longevity.",
+    "sources": [
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.6268424208475017
+        },
+        {
+            "doc_id": "prod_030",
+            "chunk_text": "Enhance Gen 4.5 Elongated\n\nThe Enhance Gen 4.5 Elongated is the brand's flagship full-foam-core paddle, widely reviewed as one of the best foam-core options under $175. The T700 raw carbon fiber face delivers high spin and a stiff striking surface, while the EPP foam core replaces traditional polypropylene honeycomb to extend dwell time and produce a markedly softer, quieter feel on contact. The elongated profile, 5.7 in handle, and 16.5 in length combine for extra reach on backhand drives and overheads, and the foam construction widens the off-center sweet spot relative to honeycomb paddles in the same shape.\n\nPrice: $169.00 USD\n\nSpecifications:\n  weight: 8.1-8.3 oz\n  grip_size: 4.1 in\n  face_material: T700 raw carbon fiber\n  core: EPP foam (full foam core, no honeycomb)\n  shape: elongated\n  length: 16.4 in\n  width: 7.5 in\n  handle_length: 5.7 in\n  swing_weight: 118-120\n  twist_weight: 6.25\n\nCare instructions: Wipe the raw T700 carbon face with a damp microfiber after each session \u2014 solvents and abrasive cleaners erode the surface texture that drives spin. EPP foam cores are more sensitive to heat than polypropylene; never leave the paddle in a hot vehicle or in direct sunlight for extended periods, as heat can deform the foam and change the paddle's response. Store flat in a paddle cover.",
+            "similarity_score": 0.4965886389322445
+        },
+        {
+            "doc_id": "prod_028",
+            "chunk_text": "Bread & Butter The Filth 16mm Elongated\n\nThe Bread & Butter Filth 16mm Elongated is a thermoformed unibody paddle from the brand's signature high-spin line. The T700 raw carbon fiber face holds aggressive peel-ply texture for tournament-grade topspin, and the 16 mm high-density polypropylene core provides plush dwell time on resets without losing the trademark Filth pop on drives. The elongated 16.5 in profile extends reach for two-handed backhands and overheads, and the octagon handle with vibration-dampening wrap reduces transfer to the wrist on off-center hits. USAP approved.\n\nPrice: $159.99 USD\n\nSpecifications:\n  weight: 7.6-8.0 oz\n  grip_size: 4.25 in\n  face_material: T700 raw carbon fiber, thermoformed unibody\n  core: 16 mm high-density polypropylene honeycomb\n  shape: elongated\n  length: 16.5 in\n  width: 7.375 in\n  handle_length: 5.5 in\n  swing_weight: 121\n  twist_weight: 6.20\n\nCare instructions: Wipe the raw carbon face with a microfiber after each session to preserve the peel-ply texture that drives spin. Skip abrasive cleaners and solvent-based wipes \u2014 they polish away the surface tooth. The thermoformed edge wall is impact-tolerant but not impact-proof; do not drop the paddle on hard courts. Store flat in a paddle cover; avoid hot vehicles.",
+            "similarity_score": 0.49454364922908534
+        },
+        {
+            "doc_id": "prod_026",
+            "chunk_text": "11SIX24 Monarch All Court 16mm\n\nThe 11SIX24 Monarch All Court is the brand's mid-mass widebody designed for players who want a forgiving, balanced feel without sacrificing pop. The 11SIX24 CFC Surface stacks three layers \u2014 two outer sheets of raw Toray T700 carbon fiber sandwiching a fiberglass middle \u2014 to combine the bite of a raw-carbon face with the energy return of a fiberglass underlayer. A 16 mm polypropylene polymer core widens the sweet spot relative to thinner 14 mm builds and softens the feel on resets and dinks.\n\nPrice: $99.99 USD\n\nSpecifications:\n  weight: 8.0-8.3 oz\n  grip_size: 4.125 in\n  face_material: 11SIX24 CFC Surface (raw Toray T700 carbon fiber + fiberglass + raw Toray T700 carbon fiber)\n  core: 16 mm polypropylene polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  handle_length: 5.75 in\n\nCare instructions: Wipe the raw carbon face with a damp microfiber after each session \u2014 abrasive cleaners sand down the surface texture that gives the paddle its spin character. Avoid leaving the paddle in direct sunlight or hot vehicles, which can soften the polymer core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.4834801574571874
+        },
+        {
+            "doc_id": "prod_002",
+            "chunk_text": "JOOLA Hyperion CFS 16\n\nThe JOOLA Hyperion CFS 16 is a premium carbon fiber paddle designed for competitive players who demand maximum spin and power. Its Carbon Friction Surface technology creates exceptional ball grip for aggressive topspin shots, while the reactive honeycomb polymer core ensures a solid, responsive feel at the net.\n\nPrice: $199.99 USD\n\nSpecifications:\n  weight: 8.2 oz\n  grip_size: 4.0 in\n  face_material: Carbon Friction Surface (CFS)\n  core: Reactive honeycomb polymer\n  shape: elongated\n  length: 16.5 in\n  width: 7.5 in\n\nCare instructions: Clean the carbon fiber face with a microfiber cloth and mild soap solution. Do not use abrasive cleaners. Store in the included neoprene cover to protect the face texture.",
+            "similarity_score": 0.43825987846446623
+        }
+    ],
+    "confidence": 0.507942948986097,
+    "model": "gpt-4o-mini",
+    "tokens": {
+        "prompt_tokens": 1772,
+        "completion_tokens": 105
+    },
+    "cost_usd": 0.0003288,
+    "cached": false,
+    "trace_id": "3f415532929c12c3eec5be0363eb7f34",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "Compare the Selkirk Vanguard Power Air and the JOOLA Hyperion CFS 16 for a player with arm fatigue who wants tournament-grade power."}'
+{
+    "answer": "For a player experiencing arm fatigue but seeking a paddle with tournament-grade power, here are key comparisons between the Selkirk Vanguard Power Air and the JOOLA Hyperion CFS 16:\n\n**Selkirk Vanguard Power Air** \n- **Weight**: 8.4 oz\n- **Core**: Air-injected polypropylene\n- **Face Material**: QuadFlex 4-layer carbon fiber\n- **Length and Width**: 16.5 in, 7.375 in\n- **Shape**: Elongated\n- **Special Features**: Designed for tournament-level play with emphasis on power, provides spin and control.\n\n**JOOLA Hyperion CFS 16**\n- **Weight**: 8.2 oz\n- **Core**: Reactive honeycomb polymer\n- **Face Material**: Carbon Friction Surface (CFS)\n- **Length and Width**: 16.5 in, 7.5 in\n- **Shape**: Elongated\n- **Special Features**: Premium carbon fiber design, exceptional ball grip for maximum spin and power.\n\n**Considerations for Arm Fatigue:**\n- Both paddles are similarly weighted, though the JOOLA Hyperion CFS 16 is slightly lighter at 8.2 oz, which might help reduce strain over long play sessions.\n- The Selkirk Vanguard Power Air could offer more advanced technology for power (air-injected core), while the JOOLA emphasizes spin which might require additional effort that could impact fatigue.\n\nBoth paddles are designed for high-level performance, but if seeking to minimize arm fatigue, the slightly lighter JOOLA Hyperion CFS 16 might be advantageous. However, if prioritizing power with advanced technology, the Selkirk Vanguard Power Air could be more suitable.",
+    "sources": [
+        {
+            "doc_id": "prod_007",
+            "chunk_text": "Selkirk Vanguard Power Air\n\nThe Selkirk Vanguard Power Air represents the pinnacle of paddle engineering. Featuring a proprietary air-injected polypropylene core and a carbon fiber face with QuadFlex 4-layer construction, it delivers unmatched power without sacrificing spin or control. Built for tournament-level play.\n\nPrice: $249.99 USD\n\nSpecifications:\n  weight: 8.4 oz\n  grip_size: 4.25 in\n  face_material: QuadFlex 4-layer carbon fiber\n  core: Air-injected polypropylene\n  shape: elongated\n  length: 16.5 in\n  width: 7.375 in\n\nCare instructions: Clean with a microfiber cloth dampened with water. Avoid chemical cleaners that may degrade the carbon fiber surface. The edge guard is replaceable \u2014 contact Selkirk for parts.",
+            "similarity_score": 0.6462492265940899
+        },
+        {
+            "doc_id": "prod_002",
+            "chunk_text": "JOOLA Hyperion CFS 16\n\nThe JOOLA Hyperion CFS 16 is a premium carbon fiber paddle designed for competitive players who demand maximum spin and power. Its Carbon Friction Surface technology creates exceptional ball grip for aggressive topspin shots, while the reactive honeycomb polymer core ensures a solid, responsive feel at the net.\n\nPrice: $199.99 USD\n\nSpecifications:\n  weight: 8.2 oz\n  grip_size: 4.0 in\n  face_material: Carbon Friction Surface (CFS)\n  core: Reactive honeycomb polymer\n  shape: elongated\n  length: 16.5 in\n  width: 7.5 in\n\nCare instructions: Clean the carbon fiber face with a microfiber cloth and mild soap solution. Do not use abrasive cleaners. Store in the included neoprene cover to protect the face texture.",
+            "similarity_score": 0.5888889438937753
+        },
+        {
+            "doc_id": "prod_001",
+            "chunk_text": "Selkirk AMPED S2\n\nThe Selkirk AMPED S2 delivers a balanced blend of power and control, making it an excellent choice for intermediate players looking to elevate their game. Its FiberFlex fiberglass face provides a responsive feel with consistent ball placement, while the X5 polypropylene honeycomb core absorbs vibration for comfortable extended play.\n\nPrice: $129.99 USD\n\nSpecifications:\n  weight: 7.8 oz\n  grip_size: 4.25 in\n  face_material: FiberFlex fiberglass\n  core: X5 polypropylene honeycomb\n  shape: widebody\n  length: 15.75 in\n  width: 8.0 in\n\nCare instructions: Wipe the paddle face with a damp cloth after play to remove ball residue. Avoid leaving the paddle in direct sunlight or extreme heat, as this can warp the core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.5096536257529783
+        },
+        {
+            "doc_id": "prod_027",
+            "chunk_text": "JOOLA Ben Johns Perseus 3S 16mm\n\nThe JOOLA Ben Johns Perseus 3S 16mm is the 16 mm control variant of Ben Johns' signature paddle in JOOLA's third-generation 3S lineup. The Charged Carbon face uses an electrostatic treatment to lock in spin without sacrificing dwell, and the Propulsion Core extends ball contact time for plush resets at the kitchen line. The 16 mm build trades a hint of raw power for a wider sweet spot and softer feel compared to the 14 mm sibling, which is why most all-court players gravitate to this thickness. UPA-A certified.\n\nPrice: $199.95 USD\n\nSpecifications:\n  weight: 8.0 oz\n  grip_size: 4.125 in\n  face_material: Charged Carbon\n  core: 16 mm Propulsion Core (honeycomb polymer)\n  shape: elongated\n  length: 16.5 in\n  width: 7.5 in\n  handle_length: 5.5 in\n  grip: JOOLA Black Feel-Tec Pure Grip\n\nCare instructions: Clean the Charged Carbon face with a microfiber cloth and a small amount of mild soap \u2014 strong solvents strip the electrostatic surface treatment that drives the paddle's spin response. Inspect the edge guard periodically; the thermoformed wall is impact-resistant but can chip on hard floors. Store in the included sleeve.",
+            "similarity_score": 0.485981526506319
+        },
+        {
+            "doc_id": "prod_026",
+            "chunk_text": "11SIX24 Monarch All Court 16mm\n\nThe 11SIX24 Monarch All Court is the brand's mid-mass widebody designed for players who want a forgiving, balanced feel without sacrificing pop. The 11SIX24 CFC Surface stacks three layers \u2014 two outer sheets of raw Toray T700 carbon fiber sandwiching a fiberglass middle \u2014 to combine the bite of a raw-carbon face with the energy return of a fiberglass underlayer. A 16 mm polypropylene polymer core widens the sweet spot relative to thinner 14 mm builds and softens the feel on resets and dinks.\n\nPrice: $99.99 USD\n\nSpecifications:\n  weight: 8.0-8.3 oz\n  grip_size: 4.125 in\n  face_material: 11SIX24 CFC Surface (raw Toray T700 carbon fiber + fiberglass + raw Toray T700 carbon fiber)\n  core: 16 mm polypropylene polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  handle_length: 5.75 in\n\nCare instructions: Wipe the raw carbon face with a damp microfiber after each session \u2014 abrasive cleaners sand down the surface texture that gives the paddle its spin character. Avoid leaving the paddle in direct sunlight or hot vehicles, which can soften the polymer core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.47835704641512056
+        }
+    ],
+    "confidence": 0.5418260738324566,
+    "model": "gpt-4o",
+    "tokens": {
+        "prompt_tokens": 1552,
+        "completion_tokens": 363
+    },
+    "cost_usd": 0.00751,
+    "cached": false,
+    "trace_id": "222ec3ab45a131b40f4b640e4b214c36",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "Is the Engage Pursuit MX a forgiving choice for someone who plays casually on weekends?"}'
+{
+    "answer": "The Engage Pursuit MX is designed for players who prioritize touch, feel, and finesse, thanks to its ControlPro polymer core and textured fiberglass face. However, it might not be the most forgiving choice for casual players. Here are some considerations:\n\n- **Core and Face**: The polymer core offers excellent control and the textured fiberglass face enhances spin, which can benefit players looking for a softer, more controlled game rather than sheer power.\n- **Weight and Grip**: Weighing in at 7.5 oz with a grip size of 4.25 in, it is relatively lightweight, which can help with maneuverability and reduce arm fatigue.\n- **Play Style**: It's particularly suited for players focusing on dinking and soft game strategies rather than hitting with raw power.\n\nIf you're looking for something more forgiving and balanced, you might consider paddles like the Paddletek Bantam TS-5, which is noted for easy maneuverability and a forgiving sweet spot.",
+    "sources": [
+        {
+            "doc_id": "prod_003",
+            "chunk_text": "Engage Pursuit MX\n\nThe Engage Pursuit MX features a proprietary ControlPro polymer core that delivers unmatched touch and feel for dinking and soft game strategies. The textured fiberglass face adds spin capability without sacrificing control, making it a favorite among players who prioritize finesse over raw power.\n\nPrice: $159.99 USD\n\nSpecifications:\n  weight: 7.5 oz\n  grip_size: 4.25 in\n  face_material: Textured fiberglass\n  core: ControlPro polymer\n  shape: widebody\n  length: 15.5 in\n  width: 8.125 in\n\nCare instructions: Wipe down with a damp cloth after each session. The textured face can collect debris \u2014 use a soft brush for deeper cleaning. Avoid exposing the paddle to temperatures above 120\u00b0F.",
+            "similarity_score": 0.6122068125883343
+        },
+        {
+            "doc_id": "prod_006",
+            "chunk_text": "Paddletek Bantam TS-5\n\nThe Paddletek Bantam TS-5 is the go-to paddle for beginners and recreational players seeking an affordable yet high-quality entry point. Its lightweight polymer core and fiberglass composite face offer a forgiving sweet spot and easy maneuverability, reducing arm fatigue during longer sessions.\n\nPrice: $114.99 USD\n\nSpecifications:\n  weight: 7.3 oz\n  grip_size: 4.0 in\n  face_material: Fiberglass composite\n  core: Smart Response Technology polymer\n  shape: widebody\n  length: 15.5 in\n  width: 8.0 in\n\nCare instructions: Clean with a damp cloth. The fiberglass face is durable for recreational use. Store indoors to protect the edge guard from cracking in cold weather.",
+            "similarity_score": 0.3834652677558694
+        },
+        {
+            "doc_id": "prod_026",
+            "chunk_text": "11SIX24 Monarch All Court 16mm\n\nThe 11SIX24 Monarch All Court is the brand's mid-mass widebody designed for players who want a forgiving, balanced feel without sacrificing pop. The 11SIX24 CFC Surface stacks three layers \u2014 two outer sheets of raw Toray T700 carbon fiber sandwiching a fiberglass middle \u2014 to combine the bite of a raw-carbon face with the energy return of a fiberglass underlayer. A 16 mm polypropylene polymer core widens the sweet spot relative to thinner 14 mm builds and softens the feel on resets and dinks.\n\nPrice: $99.99 USD\n\nSpecifications:\n  weight: 8.0-8.3 oz\n  grip_size: 4.125 in\n  face_material: 11SIX24 CFC Surface (raw Toray T700 carbon fiber + fiberglass + raw Toray T700 carbon fiber)\n  core: 16 mm polypropylene polymer honeycomb\n  shape: widebody\n  length: 16.0 in\n  width: 8.0 in\n  handle_length: 5.75 in\n\nCare instructions: Wipe the raw carbon face with a damp microfiber after each session \u2014 abrasive cleaners sand down the surface texture that gives the paddle its spin character. Avoid leaving the paddle in direct sunlight or hot vehicles, which can soften the polymer core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.3746770444107659
+        },
+        {
+            "doc_id": "prod_001",
+            "chunk_text": "Selkirk AMPED S2\n\nThe Selkirk AMPED S2 delivers a balanced blend of power and control, making it an excellent choice for intermediate players looking to elevate their game. Its FiberFlex fiberglass face provides a responsive feel with consistent ball placement, while the X5 polypropylene honeycomb core absorbs vibration for comfortable extended play.\n\nPrice: $129.99 USD\n\nSpecifications:\n  weight: 7.8 oz\n  grip_size: 4.25 in\n  face_material: FiberFlex fiberglass\n  core: X5 polypropylene honeycomb\n  shape: widebody\n  length: 15.75 in\n  width: 8.0 in\n\nCare instructions: Wipe the paddle face with a damp cloth after play to remove ball residue. Avoid leaving the paddle in direct sunlight or extreme heat, as this can warp the core. Store in a paddle cover when not in use.",
+            "similarity_score": 0.373122510941849
+        },
+        {
+            "doc_id": "prod_018",
+            "chunk_text": "Engage Court Shorts\n\nThe Engage Court Shorts are built for athletic movement with a 7-inch inseam and gusseted crotch for unrestricted lateral reach. Deep side pockets hold multiple balls, and the lightweight woven fabric dries quickly after sweaty sessions. Elastic waistband with internal drawcord.\n\nPrice: $44.99 USD\n\nSpecifications:\n  material: 100% recycled polyester, DWR finish\n  sizes_available: ['S', 'M', 'L', 'XL', 'XXL']\n  color_options: ['Graphite', 'Navy', 'Black']\n\nCare instructions: Machine wash cold. The DWR (durable water repellent) finish will diminish over time \u2014 tumble dry on low heat periodically to reactivate the treatment.",
+            "similarity_score": 0.35918313199831176
+        }
+    ],
+    "confidence": 0.4205309535390261,
+    "model": "gpt-4o",
+    "tokens": {
+        "prompt_tokens": 1380,
+        "completion_tokens": 197
+    },
+    "cost_usd": 0.00542,
+    "cached": false,
+    "trace_id": "ba6cdc8236f0a5b04f9871a3710230a7",
+    "blocked_by": null
+}
+

@@ -1,0 +1,11 @@
+$ uv run python -c 'from src.optimization.streaming import compare_ttft; ...'  # model = settings.model_complex (gpt-4o), top_k=5
+
+| question | blocking TTFT (ms) | streaming TTFT (ms) | improvement (ms) | improvement (%) | blocking total (ms) | streaming total (ms) |
+|---|---|---|---|---|---|---|
+| What compression level does the arm sleeve for tennis elbow provide? | 2139 | 633 | 1506 | 70.4 | 2139 | 1041 |
+| Which shoe widths are available for the Fresh Foam Lav v2? | 1623 | 545 | 1078 | 66.4 | 1623 | 1003 |
+| What features does the CRBN Pro Team Backpack 2.0 include for storing shoes and laptops? | 2095 | 518 | 1578 | 75.3 | 2095 | 1124 |
+
+Average TTFT improvement: 1387 ms (70.7%)
+
+raw: {"blocking": {"ttft_ms": 2095.30866597197, "total_ms": 2095.30866597197, "total_tokens": 1318}, "streaming": {"ttft_ms": 517.7787500142585, "total_ms": 1123.8984999945387, "total_tokens": 1306}, "ttft_improvement_ms": 1577.5299159577116, "ttft_improvement_pct": 75.28866470019243}

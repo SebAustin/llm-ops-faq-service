@@ -1,0 +1,291 @@
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "How many balls come in the Vulcan VPRO Flight pack?"}'
+{
+    "answer": "The Vulcan VPRO Flight outdoor pickleball pack contains 6 balls.",
+    "sources": [
+        {
+            "doc_id": "prod_032",
+            "chunk_text": "Vulcan VPRO Flight Outdoor Ball (6-Pack)\n\nThe Vulcan VPRO Flight is a tournament-grade outdoor pickleball with 40 precision-drilled holes and a seamless rotomolded shell. It is engineered for a consistent bounce in cold weather, staying crack-resistant down to 40\u00b0F, which makes it a strong choice for winter and early-spring outdoor play.\n\nPrice: $17.99 USD\n\nSpecifications:\n  pack_size: 6 balls\n  hole_count: 40\n  weight: 0.92 oz per ball\n  diameter: 2.94 in\n  construction: Seamless rotomolded\n  color: Neon optic yellow\n  cold_weather_rating: Crack-resistant to 40\u00b0F\n  usapa_approved: Yes\n\nCare instructions: Store balls in a cool, dry place away from direct sunlight. Rotate out balls that develop soft spots or lose roundness. Rinse with water and air dry after muddy sessions.",
+            "similarity_score": 0.6376099773963004
+        },
+        {
+            "doc_id": "prod_010",
+            "chunk_text": "Dura Fast 40 Outdoor Pickleballs\n\nThe Dura Fast 40 is a tournament-grade outdoor ball trusted by competitive players for its true bounce and predictable flight. Pack of 12 balls. The seamless one-piece rotationally molded construction delivers uniform wall thickness and exceptional roundness for consistent play.\n\nPrice: $29.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Rotationally molded seamless plastic\n  indoor_outdoor: outdoor\n\nCare instructions: Outdoor balls wear faster in extreme heat or cold. Store indoors between sessions. This is a 12-pack \u2014 keep spares on hand during competitive play.",
+            "similarity_score": 0.4289855359250694
+        },
+        {
+            "doc_id": "prod_009",
+            "chunk_text": "Onix Pure 2 Indoor Pickleballs\n\nThe Onix Pure 2 is engineered specifically for indoor play, featuring 26 precisely spaced holes for a softer, more controlled flight on gym and rec center surfaces. The true-flight design minimizes wobble and provides consistent bounce on smooth indoor courts.\n\nPrice: $9.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.86 oz\n  hole_count: 26\n  material: Durable TPU blend\n  indoor_outdoor: indoor\n\nCare instructions: Indoor balls last longer than outdoor balls. Store at room temperature. Clean with a damp cloth if they pick up dust or gym floor residue.",
+            "similarity_score": 0.38725732741827956
+        },
+        {
+            "doc_id": "prod_025",
+            "chunk_text": "Gamma Hi-Rise Ball Hopper\n\nThe Gamma Hi-Rise Ball Hopper holds up to 75 balls and doubles as a convenient ball dispenser during drills and practice sessions. The hi-rise design means no bending to pick up balls \u2014 just press the basket over a ball to scoop it. Folds flat for easy storage.\n\nPrice: $34.99 USD\n\nSpecifications:\n  material: Powder-coated steel wire\n  dimensions: 19 x 16 x 33 in (standing), folds to 4 in flat\n  features: ['Holds 75 balls', 'Press-to-pick-up design', 'Rubber feet prevent scratching', 'Folds flat']\n\nCare instructions: Wipe with a dry cloth to prevent rust. Store indoors to protect the powder coating from weather damage. The rubber feet are replaceable if they wear down.",
+            "similarity_score": 0.38031526558026774
+        },
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.3773277083146851
+        }
+    ],
+    "confidence": 0.44229916292692045,
+    "model": "gpt-4.1-nano",
+    "tokens": {
+        "prompt_tokens": 1309,
+        "completion_tokens": 15
+    },
+    "cost_usd": 0.0001369,
+    "cached": false,
+    "trace_id": "2423db7b9bf02877b93dac67ff5f07f8",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "How many balls are in the Vulcan VPRO Flight pack?"}'
+{
+    "answer": "The Vulcan VPRO Flight outdoor pickleball pack contains 6 balls.",
+    "sources": [
+        {
+            "doc_id": "prod_032",
+            "chunk_text": "Vulcan VPRO Flight Outdoor Ball (6-Pack)\n\nThe Vulcan VPRO Flight is a tournament-grade outdoor pickleball with 40 precision-drilled holes and a seamless rotomolded shell. It is engineered for a consistent bounce in cold weather, staying crack-resistant down to 40\u00b0F, which makes it a strong choice for winter and early-spring outdoor play.\n\nPrice: $17.99 USD\n\nSpecifications:\n  pack_size: 6 balls\n  hole_count: 40\n  weight: 0.92 oz per ball\n  diameter: 2.94 in\n  construction: Seamless rotomolded\n  color: Neon optic yellow\n  cold_weather_rating: Crack-resistant to 40\u00b0F\n  usapa_approved: Yes\n\nCare instructions: Store balls in a cool, dry place away from direct sunlight. Rotate out balls that develop soft spots or lose roundness. Rinse with water and air dry after muddy sessions.",
+            "similarity_score": 0.6376099773963004
+        },
+        {
+            "doc_id": "prod_010",
+            "chunk_text": "Dura Fast 40 Outdoor Pickleballs\n\nThe Dura Fast 40 is a tournament-grade outdoor ball trusted by competitive players for its true bounce and predictable flight. Pack of 12 balls. The seamless one-piece rotationally molded construction delivers uniform wall thickness and exceptional roundness for consistent play.\n\nPrice: $29.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Rotationally molded seamless plastic\n  indoor_outdoor: outdoor\n\nCare instructions: Outdoor balls wear faster in extreme heat or cold. Store indoors between sessions. This is a 12-pack \u2014 keep spares on hand during competitive play.",
+            "similarity_score": 0.4289855359250694
+        },
+        {
+            "doc_id": "prod_009",
+            "chunk_text": "Onix Pure 2 Indoor Pickleballs\n\nThe Onix Pure 2 is engineered specifically for indoor play, featuring 26 precisely spaced holes for a softer, more controlled flight on gym and rec center surfaces. The true-flight design minimizes wobble and provides consistent bounce on smooth indoor courts.\n\nPrice: $9.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.86 oz\n  hole_count: 26\n  material: Durable TPU blend\n  indoor_outdoor: indoor\n\nCare instructions: Indoor balls last longer than outdoor balls. Store at room temperature. Clean with a damp cloth if they pick up dust or gym floor residue.",
+            "similarity_score": 0.38725732741827956
+        },
+        {
+            "doc_id": "prod_025",
+            "chunk_text": "Gamma Hi-Rise Ball Hopper\n\nThe Gamma Hi-Rise Ball Hopper holds up to 75 balls and doubles as a convenient ball dispenser during drills and practice sessions. The hi-rise design means no bending to pick up balls \u2014 just press the basket over a ball to scoop it. Folds flat for easy storage.\n\nPrice: $34.99 USD\n\nSpecifications:\n  material: Powder-coated steel wire\n  dimensions: 19 x 16 x 33 in (standing), folds to 4 in flat\n  features: ['Holds 75 balls', 'Press-to-pick-up design', 'Rubber feet prevent scratching', 'Folds flat']\n\nCare instructions: Wipe with a dry cloth to prevent rust. Store indoors to protect the powder coating from weather damage. The rubber feet are replaceable if they wear down.",
+            "similarity_score": 0.38031526558026774
+        },
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.3773277083146851
+        }
+    ],
+    "confidence": 0.44229916292692045,
+    "model": "gpt-4.1-nano",
+    "tokens": {
+        "prompt_tokens": 1309,
+        "completion_tokens": 15
+    },
+    "cost_usd": 0.0001369,
+    "cached": true,
+    "trace_id": "2423db7b9bf02877b93dac67ff5f07f8",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "How many balls come in a Vulcan VPRO Flight pack?"}'
+{
+    "answer": "The Vulcan VPRO Flight outdoor pickleball pack contains 6 balls.",
+    "sources": [
+        {
+            "doc_id": "prod_032",
+            "chunk_text": "Vulcan VPRO Flight Outdoor Ball (6-Pack)\n\nThe Vulcan VPRO Flight is a tournament-grade outdoor pickleball with 40 precision-drilled holes and a seamless rotomolded shell. It is engineered for a consistent bounce in cold weather, staying crack-resistant down to 40\u00b0F, which makes it a strong choice for winter and early-spring outdoor play.\n\nPrice: $17.99 USD\n\nSpecifications:\n  pack_size: 6 balls\n  hole_count: 40\n  weight: 0.92 oz per ball\n  diameter: 2.94 in\n  construction: Seamless rotomolded\n  color: Neon optic yellow\n  cold_weather_rating: Crack-resistant to 40\u00b0F\n  usapa_approved: Yes\n\nCare instructions: Store balls in a cool, dry place away from direct sunlight. Rotate out balls that develop soft spots or lose roundness. Rinse with water and air dry after muddy sessions.",
+            "similarity_score": 0.6376099773963004
+        },
+        {
+            "doc_id": "prod_010",
+            "chunk_text": "Dura Fast 40 Outdoor Pickleballs\n\nThe Dura Fast 40 is a tournament-grade outdoor ball trusted by competitive players for its true bounce and predictable flight. Pack of 12 balls. The seamless one-piece rotationally molded construction delivers uniform wall thickness and exceptional roundness for consistent play.\n\nPrice: $29.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Rotationally molded seamless plastic\n  indoor_outdoor: outdoor\n\nCare instructions: Outdoor balls wear faster in extreme heat or cold. Store indoors between sessions. This is a 12-pack \u2014 keep spares on hand during competitive play.",
+            "similarity_score": 0.4289855359250694
+        },
+        {
+            "doc_id": "prod_009",
+            "chunk_text": "Onix Pure 2 Indoor Pickleballs\n\nThe Onix Pure 2 is engineered specifically for indoor play, featuring 26 precisely spaced holes for a softer, more controlled flight on gym and rec center surfaces. The true-flight design minimizes wobble and provides consistent bounce on smooth indoor courts.\n\nPrice: $9.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.86 oz\n  hole_count: 26\n  material: Durable TPU blend\n  indoor_outdoor: indoor\n\nCare instructions: Indoor balls last longer than outdoor balls. Store at room temperature. Clean with a damp cloth if they pick up dust or gym floor residue.",
+            "similarity_score": 0.38725732741827956
+        },
+        {
+            "doc_id": "prod_025",
+            "chunk_text": "Gamma Hi-Rise Ball Hopper\n\nThe Gamma Hi-Rise Ball Hopper holds up to 75 balls and doubles as a convenient ball dispenser during drills and practice sessions. The hi-rise design means no bending to pick up balls \u2014 just press the basket over a ball to scoop it. Folds flat for easy storage.\n\nPrice: $34.99 USD\n\nSpecifications:\n  material: Powder-coated steel wire\n  dimensions: 19 x 16 x 33 in (standing), folds to 4 in flat\n  features: ['Holds 75 balls', 'Press-to-pick-up design', 'Rubber feet prevent scratching', 'Folds flat']\n\nCare instructions: Wipe with a dry cloth to prevent rust. Store indoors to protect the powder coating from weather damage. The rubber feet are replaceable if they wear down.",
+            "similarity_score": 0.38031526558026774
+        },
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.3773277083146851
+        }
+    ],
+    "confidence": 0.44229916292692045,
+    "model": "gpt-4.1-nano",
+    "tokens": {
+        "prompt_tokens": 1309,
+        "completion_tokens": 15
+    },
+    "cost_usd": 0.0001369,
+    "cached": true,
+    "trace_id": "2423db7b9bf02877b93dac67ff5f07f8",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "Vulcan VPRO Flight pack: how many balls come in it?"}'
+{
+    "answer": "The Vulcan VPRO Flight outdoor pickleball pack contains 6 balls.",
+    "sources": [
+        {
+            "doc_id": "prod_032",
+            "chunk_text": "Vulcan VPRO Flight Outdoor Ball (6-Pack)\n\nThe Vulcan VPRO Flight is a tournament-grade outdoor pickleball with 40 precision-drilled holes and a seamless rotomolded shell. It is engineered for a consistent bounce in cold weather, staying crack-resistant down to 40\u00b0F, which makes it a strong choice for winter and early-spring outdoor play.\n\nPrice: $17.99 USD\n\nSpecifications:\n  pack_size: 6 balls\n  hole_count: 40\n  weight: 0.92 oz per ball\n  diameter: 2.94 in\n  construction: Seamless rotomolded\n  color: Neon optic yellow\n  cold_weather_rating: Crack-resistant to 40\u00b0F\n  usapa_approved: Yes\n\nCare instructions: Store balls in a cool, dry place away from direct sunlight. Rotate out balls that develop soft spots or lose roundness. Rinse with water and air dry after muddy sessions.",
+            "similarity_score": 0.6376099773963004
+        },
+        {
+            "doc_id": "prod_010",
+            "chunk_text": "Dura Fast 40 Outdoor Pickleballs\n\nThe Dura Fast 40 is a tournament-grade outdoor ball trusted by competitive players for its true bounce and predictable flight. Pack of 12 balls. The seamless one-piece rotationally molded construction delivers uniform wall thickness and exceptional roundness for consistent play.\n\nPrice: $29.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Rotationally molded seamless plastic\n  indoor_outdoor: outdoor\n\nCare instructions: Outdoor balls wear faster in extreme heat or cold. Store indoors between sessions. This is a 12-pack \u2014 keep spares on hand during competitive play.",
+            "similarity_score": 0.4289855359250694
+        },
+        {
+            "doc_id": "prod_009",
+            "chunk_text": "Onix Pure 2 Indoor Pickleballs\n\nThe Onix Pure 2 is engineered specifically for indoor play, featuring 26 precisely spaced holes for a softer, more controlled flight on gym and rec center surfaces. The true-flight design minimizes wobble and provides consistent bounce on smooth indoor courts.\n\nPrice: $9.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.86 oz\n  hole_count: 26\n  material: Durable TPU blend\n  indoor_outdoor: indoor\n\nCare instructions: Indoor balls last longer than outdoor balls. Store at room temperature. Clean with a damp cloth if they pick up dust or gym floor residue.",
+            "similarity_score": 0.38725732741827956
+        },
+        {
+            "doc_id": "prod_025",
+            "chunk_text": "Gamma Hi-Rise Ball Hopper\n\nThe Gamma Hi-Rise Ball Hopper holds up to 75 balls and doubles as a convenient ball dispenser during drills and practice sessions. The hi-rise design means no bending to pick up balls \u2014 just press the basket over a ball to scoop it. Folds flat for easy storage.\n\nPrice: $34.99 USD\n\nSpecifications:\n  material: Powder-coated steel wire\n  dimensions: 19 x 16 x 33 in (standing), folds to 4 in flat\n  features: ['Holds 75 balls', 'Press-to-pick-up design', 'Rubber feet prevent scratching', 'Folds flat']\n\nCare instructions: Wipe with a dry cloth to prevent rust. Store indoors to protect the powder coating from weather damage. The rubber feet are replaceable if they wear down.",
+            "similarity_score": 0.38031526558026774
+        },
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.3773277083146851
+        }
+    ],
+    "confidence": 0.44229916292692045,
+    "model": "gpt-4.1-nano",
+    "tokens": {
+        "prompt_tokens": 1309,
+        "completion_tokens": 15
+    },
+    "cost_usd": 0.0001369,
+    "cached": true,
+    "trace_id": "2423db7b9bf02877b93dac67ff5f07f8",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "How many balls does the Vulcan VPRO Flight pack come with?"}'
+{
+    "answer": "The Vulcan VPRO Flight outdoor pickleball pack contains 6 balls.",
+    "sources": [
+        {
+            "doc_id": "prod_032",
+            "chunk_text": "Vulcan VPRO Flight Outdoor Ball (6-Pack)\n\nThe Vulcan VPRO Flight is a tournament-grade outdoor pickleball with 40 precision-drilled holes and a seamless rotomolded shell. It is engineered for a consistent bounce in cold weather, staying crack-resistant down to 40\u00b0F, which makes it a strong choice for winter and early-spring outdoor play.\n\nPrice: $17.99 USD\n\nSpecifications:\n  pack_size: 6 balls\n  hole_count: 40\n  weight: 0.92 oz per ball\n  diameter: 2.94 in\n  construction: Seamless rotomolded\n  color: Neon optic yellow\n  cold_weather_rating: Crack-resistant to 40\u00b0F\n  usapa_approved: Yes\n\nCare instructions: Store balls in a cool, dry place away from direct sunlight. Rotate out balls that develop soft spots or lose roundness. Rinse with water and air dry after muddy sessions.",
+            "similarity_score": 0.6376099773963004
+        },
+        {
+            "doc_id": "prod_010",
+            "chunk_text": "Dura Fast 40 Outdoor Pickleballs\n\nThe Dura Fast 40 is a tournament-grade outdoor ball trusted by competitive players for its true bounce and predictable flight. Pack of 12 balls. The seamless one-piece rotationally molded construction delivers uniform wall thickness and exceptional roundness for consistent play.\n\nPrice: $29.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Rotationally molded seamless plastic\n  indoor_outdoor: outdoor\n\nCare instructions: Outdoor balls wear faster in extreme heat or cold. Store indoors between sessions. This is a 12-pack \u2014 keep spares on hand during competitive play.",
+            "similarity_score": 0.4289855359250694
+        },
+        {
+            "doc_id": "prod_009",
+            "chunk_text": "Onix Pure 2 Indoor Pickleballs\n\nThe Onix Pure 2 is engineered specifically for indoor play, featuring 26 precisely spaced holes for a softer, more controlled flight on gym and rec center surfaces. The true-flight design minimizes wobble and provides consistent bounce on smooth indoor courts.\n\nPrice: $9.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.86 oz\n  hole_count: 26\n  material: Durable TPU blend\n  indoor_outdoor: indoor\n\nCare instructions: Indoor balls last longer than outdoor balls. Store at room temperature. Clean with a damp cloth if they pick up dust or gym floor residue.",
+            "similarity_score": 0.38725732741827956
+        },
+        {
+            "doc_id": "prod_025",
+            "chunk_text": "Gamma Hi-Rise Ball Hopper\n\nThe Gamma Hi-Rise Ball Hopper holds up to 75 balls and doubles as a convenient ball dispenser during drills and practice sessions. The hi-rise design means no bending to pick up balls \u2014 just press the basket over a ball to scoop it. Folds flat for easy storage.\n\nPrice: $34.99 USD\n\nSpecifications:\n  material: Powder-coated steel wire\n  dimensions: 19 x 16 x 33 in (standing), folds to 4 in flat\n  features: ['Holds 75 balls', 'Press-to-pick-up design', 'Rubber feet prevent scratching', 'Folds flat']\n\nCare instructions: Wipe with a dry cloth to prevent rust. Store indoors to protect the powder coating from weather damage. The rubber feet are replaceable if they wear down.",
+            "similarity_score": 0.38031526558026774
+        },
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.3773277083146851
+        }
+    ],
+    "confidence": 0.44229916292692045,
+    "model": "gpt-4.1-nano",
+    "tokens": {
+        "prompt_tokens": 1309,
+        "completion_tokens": 15
+    },
+    "cost_usd": 0.0001369,
+    "cached": true,
+    "trace_id": "2423db7b9bf02877b93dac67ff5f07f8",
+    "blocked_by": null
+}
+
+$ curl -s -X POST http://localhost:8080/query -H 'Content-Type: application/json' -d '{"question": "What number of balls come in the Vulcan VPRO Flight pack?"}'
+{
+    "answer": "The Vulcan VPRO Flight outdoor pickleball pack contains 6 balls.",
+    "sources": [
+        {
+            "doc_id": "prod_032",
+            "chunk_text": "Vulcan VPRO Flight Outdoor Ball (6-Pack)\n\nThe Vulcan VPRO Flight is a tournament-grade outdoor pickleball with 40 precision-drilled holes and a seamless rotomolded shell. It is engineered for a consistent bounce in cold weather, staying crack-resistant down to 40\u00b0F, which makes it a strong choice for winter and early-spring outdoor play.\n\nPrice: $17.99 USD\n\nSpecifications:\n  pack_size: 6 balls\n  hole_count: 40\n  weight: 0.92 oz per ball\n  diameter: 2.94 in\n  construction: Seamless rotomolded\n  color: Neon optic yellow\n  cold_weather_rating: Crack-resistant to 40\u00b0F\n  usapa_approved: Yes\n\nCare instructions: Store balls in a cool, dry place away from direct sunlight. Rotate out balls that develop soft spots or lose roundness. Rinse with water and air dry after muddy sessions.",
+            "similarity_score": 0.6376099773963004
+        },
+        {
+            "doc_id": "prod_010",
+            "chunk_text": "Dura Fast 40 Outdoor Pickleballs\n\nThe Dura Fast 40 is a tournament-grade outdoor ball trusted by competitive players for its true bounce and predictable flight. Pack of 12 balls. The seamless one-piece rotationally molded construction delivers uniform wall thickness and exceptional roundness for consistent play.\n\nPrice: $29.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.92 oz\n  hole_count: 40\n  material: Rotationally molded seamless plastic\n  indoor_outdoor: outdoor\n\nCare instructions: Outdoor balls wear faster in extreme heat or cold. Store indoors between sessions. This is a 12-pack \u2014 keep spares on hand during competitive play.",
+            "similarity_score": 0.4289855359250694
+        },
+        {
+            "doc_id": "prod_009",
+            "chunk_text": "Onix Pure 2 Indoor Pickleballs\n\nThe Onix Pure 2 is engineered specifically for indoor play, featuring 26 precisely spaced holes for a softer, more controlled flight on gym and rec center surfaces. The true-flight design minimizes wobble and provides consistent bounce on smooth indoor courts.\n\nPrice: $9.99 USD\n\nSpecifications:\n  diameter: 2.87 in\n  weight: 0.86 oz\n  hole_count: 26\n  material: Durable TPU blend\n  indoor_outdoor: indoor\n\nCare instructions: Indoor balls last longer than outdoor balls. Store at room temperature. Clean with a damp cloth if they pick up dust or gym floor residue.",
+            "similarity_score": 0.38725732741827956
+        },
+        {
+            "doc_id": "prod_025",
+            "chunk_text": "Gamma Hi-Rise Ball Hopper\n\nThe Gamma Hi-Rise Ball Hopper holds up to 75 balls and doubles as a convenient ball dispenser during drills and practice sessions. The hi-rise design means no bending to pick up balls \u2014 just press the basket over a ball to scoop it. Folds flat for easy storage.\n\nPrice: $34.99 USD\n\nSpecifications:\n  material: Powder-coated steel wire\n  dimensions: 19 x 16 x 33 in (standing), folds to 4 in flat\n  features: ['Holds 75 balls', 'Press-to-pick-up design', 'Rubber feet prevent scratching', 'Folds flat']\n\nCare instructions: Wipe with a dry cloth to prevent rust. Store indoors to protect the powder coating from weather damage. The rubber feet are replaceable if they wear down.",
+            "similarity_score": 0.38031526558026774
+        },
+        {
+            "doc_id": "prod_031",
+            "chunk_text": "Vatic Pro Flash 16mm\n\nThe Vatic Pro Flash 16mm is a thermoformed unibody paddle with a raw T700 carbon fiber face that grabs the ball for heavy topspin. Its foam-injected edge walls enlarge the sweet spot and dampen vibration, making it a value-priced alternative to premium carbon paddles for intermediate and advanced players who want control-oriented spin.\n\nPrice: $109.99 USD\n\nSpecifications:\n  weight: 7.9 oz\n  core_thickness: 16 mm\n  core: Polypropylene honeycomb\n  face_material: Raw T700 carbon fiber\n  construction: Thermoformed unibody with foam-injected edges\n  shape: Elongated\n  length: 16.5 in\n  width: 7.5 in\n  grip_size: 4.125 in\n  handle_length: 5.5 in\n  usapa_approved: Yes\n\nCare instructions: Clean the raw carbon face with a carbon-safe eraser or a damp microfiber cloth to restore grit. Avoid abrasive cleaners. Store at room temperature; never leave the paddle in a hot car, as heat can degrade thermoformed edges.",
+            "similarity_score": 0.3773277083146851
+        }
+    ],
+    "confidence": 0.44229916292692045,
+    "model": "gpt-4.1-nano",
+    "tokens": {
+        "prompt_tokens": 1309,
+        "completion_tokens": 15
+    },
+    "cost_usd": 0.0001369,
+    "cached": true,
+    "trace_id": "2423db7b9bf02877b93dac67ff5f07f8",
+    "blocked_by": null
+}
+
+# Cache inspection (src.cache.semantic._collection -> Chroma 'cache' collection)
+cache entries: 13
+ - Which hoodie do you sell that is rated UPF 50+ and has thumbhole cuffs?
+ - How cold can it get before the outdoor ball that is crack-resistant to 40 degrees starts to crack?
+ - What is the core thickness and face material of the Vatic Pro Flash paddle?
+ - How many balls does the ball machine hold and how long does its battery last?
+ - What is the weight of the Selkirk AMPED S2?
+ - How should I care for the Vatic Pro Flash paddle's raw carbon face?
+ - Compare the Selkirk Vanguard Power Air and the JOOLA Hyperion CFS 16 for a player with arm fatigue who wants tournament-grade power.
+ - Is the Engage Pursuit MX a forgiving choice for someone who plays casually on weekends?
+ - What paddle is good for beginners?
+ - How do I clear the dust off my paddle face?
+
+# Threshold sweep: cosine similarity to the cached base question
+base: 'How many balls come in the Vulcan VPRO Flight pack?'
+
+| kind | probe | similarity | hit@0.85 | hit@0.90 | hit@0.95 |
+|---|---|---|---|---|---|
+| paraphrase | How many balls are in the Vulcan VPRO Flight pack? | 0.984 | yes | yes | yes |
+| paraphrase | How many balls come in a Vulcan VPRO Flight pack? | 0.972 | yes | yes | yes |
+| paraphrase | Vulcan VPRO Flight pack: how many balls come in it? | 0.935 | yes | yes | no |
+| paraphrase | How many balls does the Vulcan VPRO Flight pack come with? | 0.973 | yes | yes | yes |
+| paraphrase | What number of balls come in the Vulcan VPRO Flight pack? | 0.978 | yes | yes | yes |
+| paraphrase | Vulcan VPRO ball count per pack? | 0.817 | no | no | no |
+| DIFFERENT intent | How many holes do the Vulcan VPRO Flight balls have? | 0.817 | no | no | no |
+| DIFFERENT intent | How much does the Vulcan VPRO Flight pack weigh? | 0.715 | no | no | no |
+| DIFFERENT intent | How many paddles fit in the CRBN Pro Team Backpack? | 0.445 | no | no | no |
+
+threshold 0.85: paraphrase hit-rate 5/6, different-intent false hits 0/3
+threshold 0.90: paraphrase hit-rate 5/6, different-intent false hits 0/3
+threshold 0.95: paraphrase hit-rate 4/6, different-intent false hits 0/3
+
+# Entity-swap probes (same question template, DIFFERENT product -> a hit would serve the wrong product's answer)
+| cached question | probe | similarity | hit@0.85 | hit@0.90 | hit@0.95 |
+|---|---|---|---|---|---|
+| What is the weight of the Selkirk AMPED S2? | What is the weight of the Selkirk Vanguard Power Air? | 0.613 | no | no | no |
+| What is the weight of the Selkirk AMPED S2? | What is the weight of the JOOLA Hyperion CFS 16? | 0.482 | no | no | no |
+| How many balls come in the Vulcan VPRO Flight pack? | How many balls come in the Dura Fast 40 pack? | 0.597 | no | no | no |
+| How should I care for the Vatic Pro Flash paddle's raw carbon face? | How should I care for the Bread & Butter Filth paddle's raw carbon face? | 0.799 | no | no | no |
